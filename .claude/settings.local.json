@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(flutterfire configure:*)",
+      "Bash(dart pub global activate:*)",
+      "Bash(dart pub global run flutterfire_cli:flutterfire configure:*)",
+      "Bash(flutter pub get:*)",
+      "Bash(flutter build:*)",
+      "Bash(flutter clean:*)",
+      "Bash(where:*)",
+      "Bash(C:UserslyinkjrAppDataLocalPubCachebinflutterfire.bat configure --project=bible-53642 --platforms=android --android-package-name=com.lyinkjr.kamusi --yes)",
+      "Bash(flutter run:*)",
+      "Bash(flutter analyze:*)",
+      "Bash(firebase deploy:*)",
+      "Bash(firebase use:*)",
+      "Bash(flutter pub run:*)",
+      "Bash(dart run:*)",
+      "Bash(test:*)",
+      "Bash(git checkout:*)",
+      "Bash(timeout /t 2)",
+      "Bash(gradlew.bat --stop)",
+      "Bash(cmd /c gradlew.bat --stop)",
+      "Bash(dir:*)",
+      "Bash(cmd /c dir \"C:\\\\Users\\\\lyinkjr\\\\AppData\\\\Local\\\\Android\\\\sdk\\\\ndk\")",
+      "Bash(git remote:*)",
+      "Bash(git push:*)",
+      "Bash(git pull:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git lfs track:*)",
+      "Bash(git rm:*)",
+      "Bash(git filter-branch:*)",
+      "Bash(git filter-repo:*)"
+    ]
+  }
+}

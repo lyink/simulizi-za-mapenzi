@@ -1,0 +1,86 @@
+[
+  {
+    "title": "Gusa la Usiku",
+    "author": "Lee",
+    "category": "Romance",
+    "synopsis": "Katika mazingira ya anasa na siri, muungano wa miili miwili unavunja ukimya wa usiku na kuamsha hisia ambazo hazijawahi kuguswa. Simulizi ya Shabaan na Liana katika safari ya mahaba yasiyo na mipaka.",
+    "coverImageUrl": "",
+    "readingTimeMinutes": 15,
+    "tags": ["mahaba", "seduction", "drama", "hisia"],
+    "isFeatured": true,
+    "chapters": [
+      {
+        "number": 1,
+        "title": "Mvuto usiozuilika",
+        "verses": [
+          {
+            "number": 1,
+            "text": "Liana alisimama mbele ya kioo, akirekebisha hariri nyepesi iliyokuwa ikiteleza mwilini mwake kama maji ya mtoni."
+          },
+          {
+            "number": 2,
+            "text": "Mlango ulifunguka kwa utulivu, na Shabaan akaingia, harufu ya pafyamu yake kali ikitangulia hatua zake za kiume."
+          },
+          {
+            "number": 3,
+            "text": "Macho yao yalikutana kwenye kioo; Shabaan hakusema neno, lakini mng'ao wa macho yake ulisema kila kitu kuhusu kiu iliyokuwa moyoni mwake."
+          },
+          {
+            "number": 4,
+            "text": "Alimsogelea Liana kwa nyuma, akishusha mikono yake kwenye mabega yake yaliyo wazi, na kuanza kupapasa taratibu kuelekea shingoni."
+          },
+          {
+            "number": 5,
+            "text": "Liana alishusha pumzi ya raha, akiegemeza kichwa chake kifuani mwa Shabaan, akisikia mapigo ya moyo ya mwanamume huyo yakidunda kwa kasi."
+          },
+          {
+            "number": 6,
+            "text": "Kila mguso ulikuwa kama moto mdogo uliokuwa ukichoma ngozi yake, ukimfanya asahau ulimwengu wote uliomzunguka."
+          },
+          {
+            "number": 7,
+            "text": "Shabaan alinong'ona sikioni mwake, sauti yake ikiwa nzito na yenye mamlaka ya mahaba, 'Leo, wewe ni wangu pekee, na usiku huu hauna mwisho.'"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "title": "Mdundo wa Mioyo",
+        "verses": [
+          {
+            "number": 1,
+            "text": "Chumbani kulikuwa na mwanga hafifu wa mishumaa, ukionyesha vivuli vyao vikicheza kwa ufundi wa ajabu ukutani."
+          },
+          {
+            "number": 2,
+            "text": "Shabaan alimgeuza Liana kumtazama usoni, vidole vyake vikichezea midomo ya Liana iliyokuwa ikitetemeka kwa hamu."
+          },
+          {
+            "number": 3,
+            "text": "Liana alipeleka mikono yake kwenye nywele za Shabaan, akimvuta karibu zaidi hadi miili yao ilipokuwa haina nafasi hata ya upepo kupita."
+          },
+          {
+            "number": 4,
+            "text": "Walizama kwenye bahari ya hisia, ambapo kila busu lilikuwa na ladha ya divai tamu na kila mshindo wa moyo ulikuwa wimbo wa ushindi."
+          },
+          {
+            "number": 5,
+            "text": "Haikuwa tu muungano wa miili, bali ilikuwa ni mazungumzo ya roho mbili zilizokuwa zimepotea na sasa zimepatana katika kilele cha furaha."
+          },
+          {
+            "number": 6,
+            "text": "Zoezi lile la mahaba liliendelea huku nje radi ikipiga, lakini ndani, kulikuwa na amani na utulivu uliopambwa na sauti za chini za kuridhika."
+          },
+          {
+            "number": 7,
+            "text": "Usiku ulipoanza kupasuka na kutoa nafasi kwa alfajiri, walijikuta wamekumbatiana, wakiwa wamechoka lakini wakiwa na tabasamu la siri mioyoni mwao."
+          },
+          {
+            "number": 8,
+            "text": "Liana alijua tangu wakati huo, maisha yake hayatawahi kuwa sawa tena bila mguso wa Shabaan."
+          }
+        ]
+      }
+    ]
+  }
+]

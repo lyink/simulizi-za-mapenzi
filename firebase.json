@@ -1,0 +1,28 @@
+{
+  "firestore": {
+    "rules": "firestore.rules"
+  },
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "bible-53642",
+          "appId": "1:801979775459:android:8b57bd6d57981e41e888d6",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "bible-53642",
+          "configurations": {
+            "android": "1:801979775459:android:8b57bd6d57981e41e888d6",
+            "ios": "1:801979775459:ios:72574809f061b66de888d6",
+            "macos": "1:801979775459:ios:72574809f061b66de888d6",
+            "web": "1:801979775459:web:45dc5942fbe90080e888d6",
+            "windows": "1:801979775459:web:6a909ad08799ce7ee888d6"
+          }
+        }
+      }
+    }
+  }
+}

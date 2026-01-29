@@ -1,0 +1,87 @@
+{
+  "project_info": {
+    "project_number": "801979775459",
+    "project_id": "bible-53642",
+    "storage_bucket": "bible-53642.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:801979775459:android:955446d7d97bd46de888d6",
+        "android_client_info": {
+          "package_name": "com.example.biblia"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4ppUsYvsm1lIbWAol3MXwP3Hdbu2EYac"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:801979775459:android:d3262913f47c9078e888d6",
+        "android_client_info": {
+          "package_name": "com.lyinkjr.biblia"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4ppUsYvsm1lIbWAol3MXwP3Hdbu2EYac"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:801979775459:android:8b57bd6d57981e41e888d6",
+        "android_client_info": {
+          "package_name": "com.lyinkjr.kamusi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4ppUsYvsm1lIbWAol3MXwP3Hdbu2EYac"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:801979775459:android:76c7611c259e3305e888d6",
+        "android_client_info": {
+          "package_name": "com.lyinkjr.swahili_bible"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4ppUsYvsm1lIbWAol3MXwP3Hdbu2EYac"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      },
+      "admob_app_id": "ca-app-pub-3408903389045590~5182567508"
+    }
+  ],
+  "configuration_version": "1"
+}
