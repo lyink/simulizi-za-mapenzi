@@ -54,11 +54,29 @@ A comprehensive Swahili stories and Bible application built with Flutter. The ap
    flutter pub get
    ```
 
-3. Set up Firebase:
-   - Add your `google-services.json` to `android/app/`
-   - Configure Firebase in your Firebase Console
-   - Enable Firestore Database
-   - Set up Firestore security rules (see [FIREBASE_SETUP_COMPLETE.md](FIREBASE_SETUP_COMPLETE.md))
+3. **Set up Firebase** (Required):
+
+   ⚠️ **Important**: Firebase configuration files are not included in the repository for security reasons.
+
+   - Create a Firebase project in [Firebase Console](https://console.firebase.google.com/)
+   - Download `google-services.json` and place it in `android/app/`
+   - Run FlutterFire CLI to generate configuration:
+     ```bash
+     flutter pub global activate flutterfire_cli
+     flutterfire configure
+     ```
+   - Copy example files and configure:
+     ```bash
+     cp firebase.json.example firebase.json
+     cp firestore.rules.example firestore.rules
+     cp firestore.indexes.json.example firestore.indexes.json
+     ```
+   - Deploy Firestore rules:
+     ```bash
+     firebase deploy --only firestore:rules
+     ```
+
+   📖 See [SECURITY_SETUP.md](SECURITY_SETUP.md) for detailed instructions.
 
 4. Configure AdMob (optional):
    - Update Ad IDs in [lib/services/ad_service.dart](lib/services/ad_service.dart)
@@ -99,6 +117,7 @@ lib/
 
 ## Documentation
 
+- [Security Setup Guide](SECURITY_SETUP.md) ⚠️ **Start Here**
 - [Quick Start Guide](QUICK_START.md)
 - [Firebase Setup](FIREBASE_SETUP_COMPLETE.md)
 - [Firestore Structure](FIRESTORE_STRUCTURE.md)
