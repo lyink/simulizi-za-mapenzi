@@ -1,4 +1,4 @@
-# Quick Start Guide - Simulizi za Mapenzi
+# Quick Start Guide - Hadithi kwa Watoto
 
 ## 🎉 What's New - All Fixed!
 
@@ -121,4 +121,4 @@ flutter run
 
 ## 🎯 Ready to Use!
 
-Your **Simulizi za Mapenzi** app is production-ready with all features working perfectly! 🚀
+Your **Hadithi kwa Watoto** app is production-ready with all features working perfectly! 🚀

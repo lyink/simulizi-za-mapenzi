@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:file_picker/file_picker.dart';
 import '../../services/story_service.dart';
 import '../../models/story.dart';
@@ -75,9 +74,7 @@ class _ImportStoriesScreenState extends State<ImportStoriesScreen> {
   Widget _buildInstructionCard() {
     return Card(
       elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -90,8 +87,8 @@ class _ImportStoriesScreenState extends State<ImportStoriesScreen> {
                 Text(
                   'JSON Format with Chapters & Verses',
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ],
             ),
@@ -165,10 +162,7 @@ class _ImportStoriesScreenState extends State<ImportStoriesScreen> {
 ]
 
 TIP: Add more chapters (4, 5, 6...) for longer series!''',
-                  style: TextStyle(
-                    fontFamily: 'monospace',
-                    fontSize: 11,
-                  ),
+                  style: TextStyle(fontFamily: 'monospace', fontSize: 11),
                 ),
               ),
             ),
@@ -181,12 +175,19 @@ TIP: Add more chapters (4, 5, 6...) for longer series!''',
               ),
               child: Row(
                 children: [
-                  Icon(Icons.warning_amber, size: 20, color: Colors.orange.shade700),
+                  Icon(
+                    Icons.warning_amber,
+                    size: 20,
+                    color: Colors.orange.shade700,
+                  ),
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
                       'Required: title, author, category, synopsis, chapters (with verses). Optional: tags, isFeatured',
-                      style: TextStyle(fontSize: 12, color: Colors.orange.shade900),
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.orange.shade900,
+                      ),
                     ),
                   ),
                 ],
@@ -201,9 +202,7 @@ TIP: Add more chapters (4, 5, 6...) for longer series!''',
   Widget _buildInputMethodToggle() {
     return Card(
       elevation: 1,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: Padding(
         padding: const EdgeInsets.all(8),
         child: Row(
@@ -221,8 +220,9 @@ TIP: Add more chapters (4, 5, 6...) for longer series!''',
                   backgroundColor: _selectedInputMethod == 0
                       ? Theme.of(context).primaryColor
                       : Colors.grey.shade200,
-                  foregroundColor:
-                      _selectedInputMethod == 0 ? Colors.white : Colors.black87,
+                  foregroundColor: _selectedInputMethod == 0
+                      ? Colors.white
+                      : Colors.black87,
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   elevation: _selectedInputMethod == 0 ? 2 : 0,
                 ),
@@ -244,8 +244,9 @@ TIP: Add more chapters (4, 5, 6...) for longer series!''',
                   backgroundColor: _selectedInputMethod == 1
                       ? Theme.of(context).primaryColor
                       : Colors.grey.shade200,
-                  foregroundColor:
-                      _selectedInputMethod == 1 ? Colors.white : Colors.black87,
+                  foregroundColor: _selectedInputMethod == 1
+                      ? Colors.white
+                      : Colors.black87,
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   elevation: _selectedInputMethod == 1 ? 2 : 0,
                 ),
@@ -262,9 +263,7 @@ TIP: Add more chapters (4, 5, 6...) for longer series!''',
   Widget _buildPasteSection() {
     return Card(
       elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -272,9 +271,9 @@ TIP: Add more chapters (4, 5, 6...) for longer series!''',
           children: [
             Text(
               'Paste JSON Content',
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+              style: Theme.of(
+                context,
+              ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 12),
             TextField(
@@ -288,10 +287,7 @@ TIP: Add more chapters (4, 5, 6...) for longer series!''',
                 filled: true,
                 fillColor: Colors.grey.shade50,
               ),
-              style: const TextStyle(
-                fontFamily: 'monospace',
-                fontSize: 12,
-              ),
+              style: const TextStyle(fontFamily: 'monospace', fontSize: 12),
             ),
             const SizedBox(height: 12),
             Row(
@@ -334,9 +330,7 @@ TIP: Add more chapters (4, 5, 6...) for longer series!''',
   Widget _buildFilePickerSection() {
     return Card(
       elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -344,9 +338,9 @@ TIP: Add more chapters (4, 5, 6...) for longer series!''',
           children: [
             Text(
               'Select JSON File',
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+              style: Theme.of(
+                context,
+              ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16),
             ElevatedButton.icon(
@@ -402,9 +396,7 @@ TIP: Add more chapters (4, 5, 6...) for longer series!''',
   Widget _buildStoriesPreview() {
     return Card(
       elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -417,8 +409,8 @@ TIP: Add more chapters (4, 5, 6...) for longer series!''',
                 Text(
                   'Stories Preview',
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ],
             ),
@@ -464,7 +456,10 @@ TIP: Add more chapters (4, 5, 6...) for longer series!''',
                       children: [
                         Text(
                           'by ${story['author'] ?? 'Unknown'} • ${story['category'] ?? 'No category'}',
-                          style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey.shade600,
+                          ),
                         ),
                         const SizedBox(height: 4),
                         Text(
@@ -496,9 +491,7 @@ TIP: Add more chapters (4, 5, 6...) for longer series!''',
     return Card(
       elevation: 2,
       color: Colors.red.shade50,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Row(
@@ -519,10 +512,7 @@ TIP: Add more chapters (4, 5, 6...) for longer series!''',
                   const SizedBox(height: 4),
                   Text(
                     _errorMessage!,
-                    style: TextStyle(
-                      fontSize: 13,
-                      color: Colors.red.shade800,
-                    ),
+                    style: TextStyle(fontSize: 13, color: Colors.red.shade800),
                   ),
                 ],
               ),
@@ -534,9 +524,8 @@ TIP: Add more chapters (4, 5, 6...) for longer series!''',
   }
 
   Widget _buildImportButton() {
-    final canImport = _parsedStories != null &&
-                      _parsedStories!.isNotEmpty &&
-                      !_isImporting;
+    final canImport =
+        _parsedStories != null && _parsedStories!.isNotEmpty && !_isImporting;
 
     return ElevatedButton.icon(
       onPressed: canImport ? _importStories : null,
@@ -544,9 +533,7 @@ TIP: Add more chapters (4, 5, 6...) for longer series!''',
         backgroundColor: Colors.green,
         foregroundColor: Colors.white,
         padding: const EdgeInsets.all(16),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
       icon: _isImporting
           ? const SizedBox(
@@ -627,7 +614,7 @@ TIP: Add more chapters (4, 5, 6...) for longer series!''',
             'author',
             'category',
             'synopsis',
-            'chapters'
+            'chapters',
           ];
 
           for (var field in requiredFields) {
@@ -655,7 +642,8 @@ TIP: Add more chapters (4, 5, 6...) for longer series!''',
           for (var chapter in item['chapters']) {
             if (chapter is! Map<String, dynamic>) {
               setState(() {
-                _errorMessage = 'Invalid chapter format in story "${item['title']}"';
+                _errorMessage =
+                    'Invalid chapter format in story "${item['title']}"';
                 _parsedStories = null;
               });
               return;
@@ -726,18 +714,22 @@ TIP: Add more chapters (4, 5, 6...) for longer series!''',
               final List<Verse> verses = [];
               if (chapterData['verses'] != null) {
                 for (var verseData in chapterData['verses']) {
-                  verses.add(Verse(
-                    number: verseData['number'] ?? 0,
-                    text: verseData['text'] ?? '',
-                  ));
+                  verses.add(
+                    Verse(
+                      number: verseData['number'] ?? 0,
+                      text: verseData['text'] ?? '',
+                    ),
+                  );
                 }
               }
 
-              chapters.add(Chapter(
-                number: chapterData['number'] ?? 0,
-                title: chapterData['title'] ?? '',
-                verses: verses,
-              ));
+              chapters.add(
+                Chapter(
+                  number: chapterData['number'] ?? 0,
+                  title: chapterData['title'] ?? '',
+                  verses: verses,
+                ),
+              );
             }
           }
 
@@ -751,7 +743,10 @@ TIP: Add more chapters (4, 5, 6...) for longer series!''',
             synopsis: storyData['synopsis'],
             readingTimeMinutes: storyData['readingTimeMinutes'] is int
                 ? storyData['readingTimeMinutes']
-                : int.tryParse(storyData['readingTimeMinutes']?.toString() ?? '0') ?? 0,
+                : int.tryParse(
+                        storyData['readingTimeMinutes']?.toString() ?? '0',
+                      ) ??
+                      0,
             publishedDate: DateTime.now(),
             tags: storyData['tags'] != null
                 ? List<String>.from(storyData['tags'])

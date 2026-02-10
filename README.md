@@ -1,6 +1,6 @@
-# Simulizi za Mapenzi (Kamusi ya Kiswahili)
+# Hadithi kwa Watoto (Stories for Children)
 
-A comprehensive Swahili stories and Bible application built with Flutter. The app features love stories, Bible verses, categories, and an integrated dictionary with over 16,000 words.
+A comprehensive Swahili children's stories and Bible application built with Flutter. The app features educational stories, Bible verses, story categories, and reading tools designed for children.
 
 ## Features
 
@@ -45,7 +45,7 @@ A comprehensive Swahili stories and Bible application built with Flutter. The ap
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/lyink/simulizi-za-mapenzi.git
+   git clone https://github.com/lyink/hadithi-kwa-watoto.git
    cd kamusi
    ```
 

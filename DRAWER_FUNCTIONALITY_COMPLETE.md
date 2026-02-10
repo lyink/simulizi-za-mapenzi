@@ -70,7 +70,7 @@ AppTheme.darkTheme(
 **Updated MaterialApp:**
 ```dart
 MaterialApp(
-  title: 'Simulizi za Mapenzi',
+  title: 'Hadithi kwa Watoto',
   theme: AppTheme.lightTheme(
     colorScheme: themeProvider.colorScheme,
     fontSizeMultiplier: themeProvider.fontSizeMultiplier,

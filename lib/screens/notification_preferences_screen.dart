@@ -109,16 +109,16 @@ class _NotificationPreferencesScreenState
                   Text(
                     'Stay Updated',
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).primaryColor,
-                        ),
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).primaryColor,
+                    ),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     'Get notified about new stories and reading reminders',
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: Colors.grey[700],
-                        ),
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodyMedium?.copyWith(color: Colors.grey[700]),
                   ),
                 ],
               ),
@@ -154,11 +154,13 @@ class _NotificationPreferencesScreenState
             borderRadius: BorderRadius.circular(8),
           ),
           child: Icon(
-            _notificationsEnabled ? Icons.notifications : Icons.notifications_off,
+            _notificationsEnabled
+                ? Icons.notifications
+                : Icons.notifications_off,
             color: _notificationsEnabled ? Colors.green : Colors.grey,
           ),
         ),
-        activeColor: Theme.of(context).primaryColor,
+        activeThumbColor: Theme.of(context).primaryColor,
       ),
     );
   }
@@ -263,10 +265,7 @@ class _NotificationPreferencesScreenState
               '• You\'ll be reminded to read new stories daily\n'
               '• Get instant alerts when new stories are published\n'
               '• You can disable notifications anytime',
-              style: TextStyle(
-                color: Colors.blue.shade900,
-                height: 1.5,
-              ),
+              style: TextStyle(color: Colors.blue.shade900, height: 1.5),
             ),
           ],
         ),
@@ -293,9 +292,7 @@ class _NotificationPreferencesScreenState
               const SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  value
-                      ? 'Notifications enabled'
-                      : 'Notifications disabled',
+                  value ? 'Notifications enabled' : 'Notifications disabled',
                 ),
               ),
             ],
@@ -346,7 +343,9 @@ class _NotificationPreferencesScreenState
             ),
             backgroundColor: Colors.green,
             behavior: SnackBarBehavior.floating,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
           ),
         );
       }

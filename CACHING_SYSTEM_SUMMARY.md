@@ -2,7 +2,7 @@
 
 ## 📋 Overview
 
-I've implemented a comprehensive caching and notification system for your Simulizi za Mapenzi app that provides:
+I've implemented a comprehensive caching and notification system for your Hadithi kwa Watoto app that provides:
 
 1. **Instant Loading**: Stories cached locally for <100ms load times
 2. **Smart Updates**: Only fetches new/updated stories (not entire database)

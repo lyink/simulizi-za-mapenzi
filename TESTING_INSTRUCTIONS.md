@@ -1,4 +1,4 @@
-# Testing Instructions - Simulizi za Mapenzi
+# Testing Instructions - Hadithi kwa Watoto
 
 ## How to Test All Drawer Functionality
 
@@ -317,7 +317,7 @@ If you find any issues:
 
 ## Congratulations! 🎉
 
-If all tests pass, your **Simulizi za Mapenzi** app has fully functional:
+If all tests pass, your **Hadithi kwa Watoto** app has fully functional:
 - ✅ Theme management
 - ✅ Font size adjustment
 - ✅ Color scheme selection

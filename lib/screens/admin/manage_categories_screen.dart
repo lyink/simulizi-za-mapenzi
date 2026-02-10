@@ -39,9 +39,7 @@ class _ManageCategoriesScreenState extends State<ManageCategoriesScreen> {
               stream: _categoryService.getCategories(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
+                  return const Center(child: CircularProgressIndicator());
                 }
 
                 if (snapshot.hasError) {
@@ -97,25 +95,19 @@ class _ManageCategoriesScreenState extends State<ManageCategoriesScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.category_outlined,
-              size: 80,
-              color: Colors.grey[400],
-            ),
+            Icon(Icons.category_outlined, size: 80, color: Colors.grey[400]),
             const SizedBox(height: 24),
             Text(
               'No Categories',
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+              style: Theme.of(
+                context,
+              ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 12),
             Text(
               'Add story categories by pressing the button below',
               textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.grey[600],
-              ),
+              style: TextStyle(color: Colors.grey[600]),
             ),
             const SizedBox(height: 24),
             OutlinedButton.icon(
@@ -149,9 +141,7 @@ class _ManageCategoriesScreenState extends State<ManageCategoriesScreen> {
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
       elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -177,16 +167,15 @@ class _ManageCategoriesScreenState extends State<ManageCategoriesScreen> {
                     children: [
                       Text(
                         category.name,
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                              fontWeight: FontWeight.bold,
-                            ),
+                        style: Theme.of(context).textTheme.titleMedium
+                            ?.copyWith(fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(height: 4),
                       Text(
                         category.description,
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              color: Colors.grey[600],
-                            ),
+                          color: Colors.grey[600],
+                        ),
                       ),
                     ],
                   ),
@@ -319,7 +308,7 @@ class _ManageCategoriesScreenState extends State<ManageCategoriesScreen> {
                     ),
                     const SizedBox(height: 16),
                     DropdownButtonFormField<String>(
-                      value: selectedIcon,
+                      initialValue: selectedIcon,
                       decoration: InputDecoration(
                         labelText: 'Icon',
                         prefixIcon: const Icon(Icons.image),
@@ -507,7 +496,7 @@ class _ManageCategoriesScreenState extends State<ManageCategoriesScreen> {
                     ),
                     const SizedBox(height: 16),
                     DropdownButtonFormField<String>(
-                      value: selectedIcon,
+                      initialValue: selectedIcon,
                       decoration: InputDecoration(
                         labelText: 'Icon',
                         prefixIcon: const Icon(Icons.image),
@@ -682,10 +671,7 @@ class _ManageCategoriesScreenState extends State<ManageCategoriesScreen> {
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Error: $e'),
-            backgroundColor: Colors.red,
-          ),
+          SnackBar(content: Text('Error: $e'), backgroundColor: Colors.red),
         );
       }
     }
@@ -728,10 +714,7 @@ class _ManageCategoriesScreenState extends State<ManageCategoriesScreen> {
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Error: $e'),
-            backgroundColor: Colors.red,
-          ),
+          SnackBar(content: Text('Error: $e'), backgroundColor: Colors.red),
         );
       }
     }
@@ -830,10 +813,7 @@ class _ManageCategoriesScreenState extends State<ManageCategoriesScreen> {
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Error: $e'),
-            backgroundColor: Colors.red,
-          ),
+          SnackBar(content: Text('Error: $e'), backgroundColor: Colors.red),
         );
       }
     }
@@ -865,10 +845,7 @@ class _ManageCategoriesScreenState extends State<ManageCategoriesScreen> {
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Error: $e'),
-            backgroundColor: Colors.red,
-          ),
+          SnackBar(content: Text('Error: $e'), backgroundColor: Colors.red),
         );
       }
     } finally {

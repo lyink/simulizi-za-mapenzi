@@ -8,7 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import '../lib/main.dart';
+import 'package:simulizi_za_mapenzi/main.dart';
 
 void main() {
   testWidgets('Love Stories app loads correctly', (WidgetTester tester) async {

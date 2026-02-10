@@ -1,6 +1,6 @@
 # 🎯 Ad Frequency Quick Reference Card
 
-## Deutsche Bibel Offline / Simulizi za Mapenzi
+## Deutsche Bibel Offline / Hadithi kwa Watoto
 **App ID:** `ca-app-pub-3408903389045590~8291321195`
 
 ---

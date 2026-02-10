@@ -4,7 +4,7 @@
 
 ### 1. App Name Changed
 - **From**: "Deutsche Bibel" (German Bible)
-- **To**: "Simulizi za Mapenzi" (Love Stories in Swahili)
+- **To**: "Hadithi kwa Watoto" (Love Stories in Swahili)
 - **Where**: Android, iOS, Web, App UI, Drawer
 
 ### 2. Performance Improved
@@ -43,7 +43,7 @@ flutter run
 ```
 1. App opens instantly ✅
 2. Open drawer → All items visible ✅
-3. Check header: "Simulizi za Mapenzi" ✅
+3. Check header: "Hadithi kwa Watoto" ✅
 
 ### Dark Mode:
 1. Open drawer → Toggle "Dark Mode" ✅
@@ -52,9 +52,9 @@ flutter run
 4. Perfect contrast ✅
 
 ### App Name:
-1. Home screen icon: "Simulizi za Mapenzi" ✅
-2. Drawer header: "Simulizi za Mapenzi" ✅
-3. About dialog: "Simulizi za Mapenzi" ✅
+1. Home screen icon: "Hadithi kwa Watoto" ✅
+2. Drawer header: "Hadithi kwa Watoto" ✅
+3. About dialog: "Hadithi kwa Watoto" ✅
 
 ---
 

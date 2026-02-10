@@ -247,7 +247,7 @@ TIP: Add more chapters (4, 5, 6...) for longer series!
 
 🎉 **EVERYTHING WORKS PERFECTLY!**
 
-Your **Simulizi za Mapenzi** app is now:
+Your **Hadithi kwa Watoto** app is now:
 - ✅ Fully functional
 - ✅ All text visible in all themes
 - ✅ Theme settings apply instantly

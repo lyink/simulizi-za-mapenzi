@@ -1,9 +1,9 @@
-# Setup Instructions for Simulizi za Mapenzi
+# Setup Instructions for Hadithi kwa Watoto
 
 ## What Has Been Done ✅
 
 1. **App Configuration**
-   - ✅ Changed app name to "Simulizi za Mapenzi"
+   - ✅ Changed app name to "Hadithi kwa Watoto"
    - ✅ Updated pubspec.yaml with Firebase dependencies
    - ✅ Added Google Services plugin to Android build files
    - ✅ Created Swahili UI translations in main.dart

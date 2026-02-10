@@ -1,4 +1,4 @@
-# Firestore Database Structure for Simulizi za Mapenzi
+# Firestore Database Structure for Hadithi kwa Watoto
 
 ## Collection: `stories`
 

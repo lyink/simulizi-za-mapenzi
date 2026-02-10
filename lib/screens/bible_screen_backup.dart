@@ -15,7 +15,8 @@ class BibleScreen extends StatefulWidget {
   State<BibleScreen> createState() => _BibleScreenState();
 }
 
-class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin {
+class _BibleScreenState extends State<BibleScreen>
+    with TickerProviderStateMixin {
   List<BibleVerse> _allVerses = [];
   List<BibleVerse> _filteredVerses = [];
   List<String> _books = [];
@@ -28,7 +29,7 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
   late Animation<double> _fadeAnimation;
   int _verseViewCount = 0;
   String _currentBibleName = '';
-  bool _showBooksList = false;
+  final bool _showBooksList = false;
   String _selectedTestament = '';
 
   @override
@@ -38,7 +39,10 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
       duration: const Duration(milliseconds: 300),
       vsync: this,
     );
-    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(_animationController);
+    _fadeAnimation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(_animationController);
     _loadBible();
     AdService.showAppOpenAd();
   }
@@ -84,13 +88,16 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
               itemCount: BibleService.availableBibles.length,
               itemBuilder: (context, index) {
                 final bibleFile = BibleService.availableBibles[index];
-                final bibleName = BibleService.bibleNames[bibleFile] ?? 'Unbekannt';
+                final bibleName =
+                    BibleService.bibleNames[bibleFile] ?? 'Unbekannt';
                 final isSelected = bibleFile == BibleService.currentBibleFile;
 
                 return ListTile(
                   title: Text(bibleName),
                   leading: Icon(
-                    isSelected ? Icons.radio_button_checked : Icons.radio_button_unchecked,
+                    isSelected
+                        ? Icons.radio_button_checked
+                        : Icons.radio_button_unchecked,
                     color: Theme.of(context).primaryColor,
                   ),
                   onTap: () {
@@ -110,7 +117,8 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
       },
     );
 
-    if (selectedBible != null && selectedBible != BibleService.currentBibleFile) {
+    if (selectedBible != null &&
+        selectedBible != BibleService.currentBibleFile) {
       setState(() {
         _isLoading = true;
       });
@@ -165,7 +173,9 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
     final result = await showDialog<String>(
       context: context,
       builder: (BuildContext context) {
-        final searchController = TextEditingController(text: _searchController.text);
+        final searchController = TextEditingController(
+          text: _searchController.text,
+        );
         return AlertDialog(
           title: const Text('Erweiterte Suche'),
           content: Column(
@@ -217,7 +227,9 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
       context: context,
       builder: (BuildContext context) {
         return Dialog(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
           child: Container(
             width: MediaQuery.of(context).size.width * 0.9,
             height: MediaQuery.of(context).size.height * 0.8,
@@ -232,22 +244,24 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
                         color: Theme.of(context).primaryColor,
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: const Icon(Icons.library_books, color: Colors.white),
+                      child: const Icon(
+                        Icons.library_books,
+                        color: Colors.white,
+                      ),
                     ),
                     const SizedBox(width: 12),
                     Text(
                       'Bücher der Bibel',
-                      style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).primaryColor,
-                      ),
+                      style: Theme.of(context).textTheme.headlineSmall
+                          ?.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).primaryColor,
+                          ),
                     ),
                   ],
                 ),
                 const SizedBox(height: 20),
-                Expanded(
-                  child: _buildBooksGrid(),
-                ),
+                Expanded(child: _buildBooksGrid()),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -274,7 +288,11 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
         _searchController.clear();
 
         if (chapter != null && chapter > 0) {
-          _filteredVerses = BibleService.getVersesByChapter(_allVerses, book, chapter);
+          _filteredVerses = BibleService.getVersesByChapter(
+            _allVerses,
+            book,
+            chapter,
+          );
         } else {
           _filteredVerses = BibleService.getVersesByBook(_allVerses, book);
         }
@@ -283,10 +301,16 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
   }
 
   Widget _buildBooksGrid() {
-    final oldTestamentBooks = _books.where((book) =>
-      BibleService.getBookCategory(book) == 'Altes Testament').toList();
-    final newTestamentBooks = _books.where((book) =>
-      BibleService.getBookCategory(book) == 'Neues Testament').toList();
+    final oldTestamentBooks = _books
+        .where(
+          (book) => BibleService.getBookCategory(book) == 'Altes Testament',
+        )
+        .toList();
+    final newTestamentBooks = _books
+        .where(
+          (book) => BibleService.getBookCategory(book) == 'Neues Testament',
+        )
+        .toList();
 
     return SingleChildScrollView(
       child: Column(
@@ -375,13 +399,11 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
+                    SizedBox(
                       width: double.infinity,
                       child: ElevatedButton.icon(
                         onPressed: () {
-                          Navigator.of(context).pop({
-                            'book': book,
-                          });
+                          Navigator.of(context).pop({'book': book});
                         },
                         icon: const Icon(Icons.auto_stories, size: 18),
                         label: Text('Ganzes Buch lesen'),
@@ -410,10 +432,9 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
                       children: chapters.map((chapter) {
                         return InkWell(
                           onTap: () {
-                            Navigator.of(context).pop({
-                              'book': book,
-                              'chapter': chapter,
-                            });
+                            Navigator.of(
+                              context,
+                            ).pop({'book': book, 'chapter': chapter});
                           },
                           child: Container(
                             padding: const EdgeInsets.symmetric(
@@ -423,13 +444,19 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
                             decoration: BoxDecoration(
                               gradient: LinearGradient(
                                 colors: [
-                                  Theme.of(context).primaryColor.withOpacity(0.1),
-                                  Theme.of(context).primaryColor.withOpacity(0.05),
+                                  Theme.of(
+                                    context,
+                                  ).primaryColor.withOpacity(0.1),
+                                  Theme.of(
+                                    context,
+                                  ).primaryColor.withOpacity(0.05),
                                 ],
                               ),
                               borderRadius: BorderRadius.circular(8),
                               border: Border.all(
-                                color: Theme.of(context).primaryColor.withOpacity(0.3),
+                                color: Theme.of(
+                                  context,
+                                ).primaryColor.withOpacity(0.3),
                               ),
                             ),
                             child: Text(
@@ -548,13 +575,16 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
                   children: [
                     Text(
                       'Deutsche Bibel',
-                      style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).primaryColor,
-                      ),
+                      style: Theme.of(context).textTheme.headlineSmall
+                          ?.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).primaryColor,
+                          ),
                     ),
                     Text(
-                      _currentBibleName.isNotEmpty ? _currentBibleName : 'Gottes Wort',
+                      _currentBibleName.isNotEmpty
+                          ? _currentBibleName
+                          : 'Gottes Wort',
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: Theme.of(context).primaryColor.withOpacity(0.7),
                       ),
@@ -571,7 +601,9 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
                       icon: const Icon(Icons.library_books),
                       tooltip: 'Bücher durchsuchen',
                       style: IconButton.styleFrom(
-                        backgroundColor: Theme.of(context).primaryColor.withOpacity(0.1),
+                        backgroundColor: Theme.of(
+                          context,
+                        ).primaryColor.withOpacity(0.1),
                         foregroundColor: Theme.of(context).primaryColor,
                       ),
                     ),
@@ -583,7 +615,9 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
                       icon: const Icon(Icons.search),
                       tooltip: 'Suchen',
                       style: IconButton.styleFrom(
-                        backgroundColor: Theme.of(context).primaryColor.withOpacity(0.1),
+                        backgroundColor: Theme.of(
+                          context,
+                        ).primaryColor.withOpacity(0.1),
                         foregroundColor: Theme.of(context).primaryColor,
                       ),
                     ),
@@ -619,7 +653,8 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
               ),
             ],
           ),
-          if (_selectedBook.isNotEmpty || _searchController.text.isNotEmpty) ...[
+          if (_selectedBook.isNotEmpty ||
+              _searchController.text.isNotEmpty) ...[
             const SizedBox(height: 16),
             Container(
               padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
@@ -650,13 +685,16 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
                       ),
                     ),
                   ),
-                  if (_selectedBook.isNotEmpty || _searchController.text.isNotEmpty)
+                  if (_selectedBook.isNotEmpty ||
+                      _searchController.text.isNotEmpty)
                     GestureDetector(
                       onTap: _clearSearch,
                       child: Container(
                         padding: const EdgeInsets.all(4),
                         decoration: BoxDecoration(
-                          color: Theme.of(context).primaryColor.withOpacity(0.2),
+                          color: Theme.of(
+                            context,
+                          ).primaryColor.withOpacity(0.2),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Icon(
@@ -674,7 +712,6 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
       ),
     );
   }
-
 
   Widget _buildBibleContent() {
     return _buildTestamentsView();
@@ -705,11 +742,7 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
               color: Theme.of(context).primaryColor,
               borderRadius: BorderRadius.circular(10),
             ),
-            child: const Icon(
-              Icons.book,
-              color: Colors.white,
-              size: 20,
-            ),
+            child: const Icon(Icons.book, color: Colors.white, size: 20),
           ),
           const SizedBox(width: 12),
           Expanded(
@@ -764,7 +797,8 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
 
     for (int i = 0; i < _filteredVerses.length; i++) {
       final verse = _filteredVerses[i];
-      final isNewChapter = i == 0 || _filteredVerses[i - 1].chapter != verse.chapter;
+      final isNewChapter =
+          i == 0 || _filteredVerses[i - 1].chapter != verse.chapter;
 
       if (isNewChapter && _selectedBook.isNotEmpty && _selectedChapter == 0) {
         spans.add(
@@ -793,10 +827,9 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
             ),
             TextSpan(
               text: '${verse.text} ',
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                height: 1.8,
-                letterSpacing: 0.3,
-              ),
+              style: Theme.of(
+                context,
+              ).textTheme.bodyLarge?.copyWith(height: 1.8, letterSpacing: 0.3),
               recognizer: TapGestureRecognizer()
                 ..onTap = () => _onVersePressed(verse),
             ),
@@ -860,9 +893,7 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
   ) {
     return Card(
       elevation: 8,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: InkWell(
         onTap: () => _onTestamentSelected(title),
         borderRadius: BorderRadius.circular(20),
@@ -872,15 +903,9 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [
-                color.withOpacity(0.1),
-                color.withOpacity(0.05),
-              ],
+              colors: [color.withOpacity(0.1), color.withOpacity(0.05)],
             ),
-            border: Border.all(
-              color: color.withOpacity(0.3),
-              width: 2,
-            ),
+            border: Border.all(color: color.withOpacity(0.3), width: 2),
           ),
           child: Padding(
             padding: const EdgeInsets.all(24),
@@ -892,11 +917,7 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
                     color: color,
                     borderRadius: BorderRadius.circular(16),
                   ),
-                  child: Icon(
-                    icon,
-                    color: Colors.white,
-                    size: 32,
-                  ),
+                  child: Icon(icon, color: Colors.white, size: 32),
                 ),
                 const SizedBox(width: 20),
                 Expanded(
@@ -914,10 +935,11 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
                       const SizedBox(height: 4),
                       Text(
                         bookCount,
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          color: color.withOpacity(0.8),
-                          fontWeight: FontWeight.w600,
-                        ),
+                        style: Theme.of(context).textTheme.titleMedium
+                            ?.copyWith(
+                              color: color.withOpacity(0.8),
+                              fontWeight: FontWeight.w600,
+                            ),
                       ),
                       const SizedBox(height: 2),
                       Text(
@@ -943,10 +965,16 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
   }
 
   void _onTestamentSelected(String testament) {
-    final oldTestamentBooks = _books.where((book) =>
-      BibleService.getBookCategory(book) == 'Altes Testament').toList();
-    final newTestamentBooks = _books.where((book) =>
-      BibleService.getBookCategory(book) == 'Neues Testament').toList();
+    final oldTestamentBooks = _books
+        .where(
+          (book) => BibleService.getBookCategory(book) == 'Altes Testament',
+        )
+        .toList();
+    final newTestamentBooks = _books
+        .where(
+          (book) => BibleService.getBookCategory(book) == 'Neues Testament',
+        )
+        .toList();
 
     final booksToShow = testament == 'Altes Testament'
         ? oldTestamentBooks
@@ -966,10 +994,16 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
   }
 
   Future<void> _showBooksForTestament(String testament) async {
-    final oldTestamentBooks = _books.where((book) =>
-      BibleService.getBookCategory(book) == 'Altes Testament').toList();
-    final newTestamentBooks = _books.where((book) =>
-      BibleService.getBookCategory(book) == 'Neues Testament').toList();
+    final oldTestamentBooks = _books
+        .where(
+          (book) => BibleService.getBookCategory(book) == 'Altes Testament',
+        )
+        .toList();
+    final newTestamentBooks = _books
+        .where(
+          (book) => BibleService.getBookCategory(book) == 'Neues Testament',
+        )
+        .toList();
 
     final booksToShow = testament == 'Altes Testament'
         ? oldTestamentBooks
@@ -979,7 +1013,9 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
       context: context,
       builder: (BuildContext context) {
         return Dialog(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
           child: Container(
             width: MediaQuery.of(context).size.width * 0.9,
             height: MediaQuery.of(context).size.height * 0.8,
@@ -1010,16 +1046,20 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
                         children: [
                           Text(
                             testament,
-                            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                              fontWeight: FontWeight.bold,
-                              color: Theme.of(context).primaryColor,
-                            ),
+                            style: Theme.of(context).textTheme.headlineSmall
+                                ?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context).primaryColor,
+                                ),
                           ),
                           Text(
                             '${booksToShow.length} Bücher',
-                            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              color: Theme.of(context).primaryColor.withOpacity(0.7),
-                            ),
+                            style: Theme.of(context).textTheme.bodyMedium
+                                ?.copyWith(
+                                  color: Theme.of(
+                                    context,
+                                  ).primaryColor.withOpacity(0.7),
+                                ),
                           ),
                         ],
                       ),
@@ -1027,9 +1067,7 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
                   ],
                 ),
                 const SizedBox(height: 20),
-                Expanded(
-                  child: _buildBooksGridForTestament(booksToShow),
-                ),
+                Expanded(child: _buildBooksGridForTestament(booksToShow)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -1056,7 +1094,11 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
         _searchController.clear();
 
         if (chapter != null && chapter > 0) {
-          _filteredVerses = BibleService.getVersesByChapter(_allVerses, book, chapter);
+          _filteredVerses = BibleService.getVersesByChapter(
+            _allVerses,
+            book,
+            chapter,
+          );
         } else {
           _filteredVerses = BibleService.getVersesByBook(_allVerses, book);
         }
@@ -1120,13 +1162,11 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
+                      SizedBox(
                         width: double.infinity,
                         child: ElevatedButton.icon(
                           onPressed: () {
-                            Navigator.of(context).pop({
-                              'book': book,
-                            });
+                            Navigator.of(context).pop({'book': book});
                           },
                           icon: const Icon(Icons.auto_stories, size: 18),
                           label: Text('Ganzes Buch lesen'),
@@ -1155,10 +1195,9 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
                         children: chapters.map((chapter) {
                           return InkWell(
                             onTap: () {
-                              Navigator.of(context).pop({
-                                'book': book,
-                                'chapter': chapter,
-                              });
+                              Navigator.of(
+                                context,
+                              ).pop({'book': book, 'chapter': chapter});
                             },
                             child: Container(
                               padding: const EdgeInsets.symmetric(
@@ -1168,13 +1207,19 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                   colors: [
-                                    Theme.of(context).primaryColor.withOpacity(0.1),
-                                    Theme.of(context).primaryColor.withOpacity(0.05),
+                                    Theme.of(
+                                      context,
+                                    ).primaryColor.withOpacity(0.1),
+                                    Theme.of(
+                                      context,
+                                    ).primaryColor.withOpacity(0.05),
                                   ],
                                 ),
                                 borderRadius: BorderRadius.circular(8),
                                 border: Border.all(
-                                  color: Theme.of(context).primaryColor.withOpacity(0.3),
+                                  color: Theme.of(
+                                    context,
+                                  ).primaryColor.withOpacity(0.3),
                                 ),
                               ),
                               child: Text(
@@ -1294,7 +1339,6 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
     );
   }
 
-
   Widget _buildLoadingState() {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16),
@@ -1311,7 +1355,9 @@ class _BibleScreenState extends State<BibleScreen> with TickerProviderStateMixin
               ),
               child: Shimmer.fromColors(
                 baseColor: Theme.of(context).colorScheme.surface,
-                highlightColor: Theme.of(context).colorScheme.onSurface.withOpacity(0.1),
+                highlightColor: Theme.of(
+                  context,
+                ).colorScheme.onSurface.withOpacity(0.1),
                 child: Padding(
                   padding: const EdgeInsets.all(16),
                   child: Column(

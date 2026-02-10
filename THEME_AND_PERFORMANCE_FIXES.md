@@ -8,42 +8,42 @@ All issues related to app performance, theme visibility, and app naming have bee
 
 ## 1. App Name Updated ✅
 
-### Changed From: "Deutsche Bibel" → To: "Simulizi za Mapenzi"
+### Changed From: "Deutsche Bibel" → To: "Hadithi kwa Watoto"
 
 **Files Updated:**
 
 ### Android
 - **File**: [android/app/src/main/AndroidManifest.xml:14](android/app/src/main/AndroidManifest.xml#L14)
   ```xml
-  android:label="Simulizi za Mapenzi"
+  android:label="Hadithi kwa Watoto"
   ```
 
 ### iOS
 - **File**: [ios/Runner/Info.plist](ios/Runner/Info.plist)
-  - `CFBundleDisplayName`: "Simulizi za Mapenzi"
+  - `CFBundleDisplayName`: "Hadithi kwa Watoto"
   - `CFBundleName`: "simulizi_za_mapenzi"
 
 ### Flutter App
 - **File**: [lib/main.dart:80](lib/main.dart#L80)
   ```dart
-  title: 'Simulizi za Mapenzi',
+  title: 'Hadithi kwa Watoto',
   ```
 - **File**: [lib/main.dart:135](lib/main.dart#L135)
   ```dart
-  title: const Text('Simulizi za Mapenzi'),
+  title: const Text('Hadithi kwa Watoto'),
   ```
 
 ### Web Manifest
 - **File**: [web/manifest.json](web/manifest.json)
   ```json
-  "name": "Simulizi za Mapenzi",
+  "name": "Hadithi kwa Watoto",
   "short_name": "Simulizi",
   "description": "Love Stories - A collection of romantic stories and tales in Swahili."
   ```
 
 ### App Drawer
 - **File**: [lib/widgets/app_drawer.dart:244](lib/widgets/app_drawer.dart#L244)
-  - Header title: "Simulizi za Mapenzi"
+  - Header title: "Hadithi kwa Watoto"
   - Subtitle: "Hadithi za Kuvutia" (Engaging Stories in Swahili)
   - About dialog: Application name and version updated to v1.0.2
 
@@ -220,9 +220,9 @@ Switch.adaptive(
 
 ### Test App Name:
 1. Exit to home screen
-2. Check app icon label: "Simulizi za Mapenzi"
+2. Check app icon label: "Hadithi kwa Watoto"
 3. Open app drawer
-4. Check header title: "Simulizi za Mapenzi"
+4. Check header title: "Hadithi kwa Watoto"
 5. Go to Settings → About
 6. Verify app name in about dialog
 
@@ -302,7 +302,7 @@ Switch.adaptive(
 
 All requested issues have been resolved:
 
-✅ **App name changed** to "Simulizi za Mapenzi" across all platforms
+✅ **App name changed** to "Hadithi kwa Watoto" across all platforms
 ✅ **Performance improved** with async service loading
 ✅ **Dark theme rebuilt** with complete styling
 ✅ **Font colors fixed** - readable in both themes

@@ -1,6 +1,6 @@
 # Optimized Google Mobile Ads - Final Implementation ✅
 
-## App: Deutsche Bibel Offline / Simulizi za Mapenzi
+## App: Deutsche Bibel Offline / Hadithi kwa Watoto
 **App ID:** `ca-app-pub-3408903389045590~8291321195`
 
 ---

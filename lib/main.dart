@@ -85,19 +85,19 @@ void main() async {
         ChangeNotifierProvider(create: (context) => ThemeProvider()),
         ChangeNotifierProvider(create: (context) => StoryProvider()),
       ],
-      child: const SimuliziApp(),
+      child: const HadithiApp(),
     ),
   );
 }
 
-class SimuliziApp extends StatefulWidget {
-  const SimuliziApp({super.key});
+class HadithiApp extends StatefulWidget {
+  const HadithiApp({super.key});
 
   @override
-  State<SimuliziApp> createState() => _SimuliziAppState();
+  State<HadithiApp> createState() => _HadithiAppState();
 }
 
-class _SimuliziAppState extends State<SimuliziApp> {
+class _HadithiAppState extends State<HadithiApp> {
   bool _showSplash = true;
 
   @override
@@ -106,7 +106,7 @@ class _SimuliziAppState extends State<SimuliziApp> {
       builder: (context, themeProvider, child) {
         return MaterialApp(
           key: ValueKey('${themeProvider.colorScheme}_${themeProvider.fontSize}'),
-          title: 'Simulizi za Mapenzi',
+          title: 'Hadithi kwa Watoto',
           theme: AppTheme.lightTheme(
             colorScheme: themeProvider.colorScheme,
             fontSizeMultiplier: themeProvider.fontSizeMultiplier,

@@ -1,7 +1,7 @@
 # Light Theme & Google Mobile Ads Implementation - Complete
 
 ## Summary
-This document outlines all changes made to force the light theme and implement comprehensive Google Mobile Ads integration across the Simulizi za Mapenzi app.
+This document outlines all changes made to force the light theme and implement comprehensive Google Mobile Ads integration across the Hadithi kwa Watoto app.
 
 ---
 
@@ -241,7 +241,7 @@ Ensure these settings in your AdMob dashboard:
 1. **App Settings**:
    - App ID: `ca-app-pub-3408903389045590~8291321195`
    - Platform: Android/iOS
-   - App name: Simulizi za Mapenzi
+   - App name: Hadithi kwa Watoto
 
 2. **Ad Units Created**:
    - ✅ App Open ad

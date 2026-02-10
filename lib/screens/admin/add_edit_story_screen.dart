@@ -121,106 +121,106 @@ class _AddEditStoryScreenState extends State<AddEditStoryScreen> {
               child: ListView(
                 padding: const EdgeInsets.all(16),
                 children: [
-            _buildSectionHeader('Basic Information'),
-            const SizedBox(height: 12),
-            _buildTextField(
-              controller: _titleController,
-              label: 'Story Title',
-              hint: 'Enter the story title',
-              icon: Icons.title,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter a title';
-                }
-                return null;
-              },
-            ),
-            const SizedBox(height: 16),
-            _buildTextField(
-              controller: _authorController,
-              label: 'Author',
-              hint: 'Author name',
-              icon: Icons.person,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter the author name';
-                }
-                return null;
-              },
-            ),
-            const SizedBox(height: 16),
-            _buildCategoryDropdown(),
-            const SizedBox(height: 16),
-            _buildTextField(
-              controller: _synopsisController,
-              label: 'Synopsis',
-              hint: 'Brief synopsis of the story (100-200 words)',
-              icon: Icons.description,
-              maxLines: 3,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter a synopsis';
-                }
-                if (value.length < 50) {
-                  return 'Synopsis must be at least 50 characters';
-                }
-                return null;
-              },
-            ),
-            const SizedBox(height: 16),
-            _buildTextField(
-              controller: _coverImageUrlController,
-              label: 'Cover Image URL',
-              hint: 'Enter the full URL of the story cover image',
-              icon: Icons.image,
-              keyboardType: TextInputType.url,
-            ),
-            const SizedBox(height: 24),
-            _buildSectionHeader('Story Content'),
-            const SizedBox(height: 12),
-            _buildTextField(
-              controller: _contentController,
-              label: 'Full Content',
-              hint: 'Write your story here...',
-              icon: Icons.article,
-              maxLines: 15,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter story content';
-                }
-                if (value.length < 200) {
-                  return 'Story must be at least 200 characters';
-                }
-                return null;
-              },
-            ),
-            const SizedBox(height: 24),
-            _buildSectionHeader('Additional Information'),
-            const SizedBox(height: 12),
-            _buildTextField(
-              controller: _readingTimeController,
-              label: 'Reading Time (Minutes)',
-              hint: '5',
-              icon: Icons.schedule,
-              keyboardType: TextInputType.number,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter reading time';
-                }
-                final time = int.tryParse(value);
-                if (time == null || time <= 0) {
-                  return 'Enter a valid number';
-                }
-                return null;
-              },
-            ),
-            const SizedBox(height: 16),
-            _buildTagsSection(),
-            const SizedBox(height: 16),
-            _buildFeaturedSwitch(),
-            const SizedBox(height: 32),
-            _buildSaveButton(isEditing),
-            const SizedBox(height: 16),
+                  _buildSectionHeader('Basic Information'),
+                  const SizedBox(height: 12),
+                  _buildTextField(
+                    controller: _titleController,
+                    label: 'Story Title',
+                    hint: 'Enter the story title',
+                    icon: Icons.title,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter a title';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  _buildTextField(
+                    controller: _authorController,
+                    label: 'Author',
+                    hint: 'Author name',
+                    icon: Icons.person,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter the author name';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  _buildCategoryDropdown(),
+                  const SizedBox(height: 16),
+                  _buildTextField(
+                    controller: _synopsisController,
+                    label: 'Synopsis',
+                    hint: 'Brief synopsis of the story (100-200 words)',
+                    icon: Icons.description,
+                    maxLines: 3,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter a synopsis';
+                      }
+                      if (value.length < 50) {
+                        return 'Synopsis must be at least 50 characters';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  _buildTextField(
+                    controller: _coverImageUrlController,
+                    label: 'Cover Image URL',
+                    hint: 'Enter the full URL of the story cover image',
+                    icon: Icons.image,
+                    keyboardType: TextInputType.url,
+                  ),
+                  const SizedBox(height: 24),
+                  _buildSectionHeader('Story Content'),
+                  const SizedBox(height: 12),
+                  _buildTextField(
+                    controller: _contentController,
+                    label: 'Full Content',
+                    hint: 'Write your story here...',
+                    icon: Icons.article,
+                    maxLines: 15,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter story content';
+                      }
+                      if (value.length < 200) {
+                        return 'Story must be at least 200 characters';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 24),
+                  _buildSectionHeader('Additional Information'),
+                  const SizedBox(height: 12),
+                  _buildTextField(
+                    controller: _readingTimeController,
+                    label: 'Reading Time (Minutes)',
+                    hint: '5',
+                    icon: Icons.schedule,
+                    keyboardType: TextInputType.number,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter reading time';
+                      }
+                      final time = int.tryParse(value);
+                      if (time == null || time <= 0) {
+                        return 'Enter a valid number';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  _buildTagsSection(),
+                  const SizedBox(height: 16),
+                  _buildFeaturedSwitch(),
+                  const SizedBox(height: 32),
+                  _buildSaveButton(isEditing),
+                  const SizedBox(height: 16),
                 ],
               ),
             ),
@@ -245,9 +245,9 @@ class _AddEditStoryScreenState extends State<AddEditStoryScreen> {
         const SizedBox(width: 8),
         Text(
           title,
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+          style: Theme.of(
+            context,
+          ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
         ),
       ],
     );
@@ -268,9 +268,7 @@ class _AddEditStoryScreenState extends State<AddEditStoryScreen> {
         labelText: label,
         hintText: hint,
         prefixIcon: Icon(icon),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
         filled: true,
         fillColor: Colors.grey[50],
       ),
@@ -343,21 +341,16 @@ class _AddEditStoryScreenState extends State<AddEditStoryScreen> {
     }
 
     return DropdownButtonFormField<String>(
-      value: _selectedCategory.isEmpty ? null : _selectedCategory,
+      initialValue: _selectedCategory.isEmpty ? null : _selectedCategory,
       decoration: InputDecoration(
         labelText: 'Category',
         prefixIcon: const Icon(Icons.category),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
         filled: true,
         fillColor: Colors.grey[50],
       ),
       items: _categories.map((category) {
-        return DropdownMenuItem(
-          value: category,
-          child: Text(category),
-        );
+        return DropdownMenuItem(value: category, child: Text(category));
       }).toList(),
       onChanged: (value) {
         if (value != null) {
@@ -389,9 +382,7 @@ class _AddEditStoryScreenState extends State<AddEditStoryScreen> {
               icon: const Icon(Icons.add_circle),
               onPressed: _addTag,
             ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
             filled: true,
             fillColor: Colors.grey[50],
           ),
@@ -411,7 +402,9 @@ class _AddEditStoryScreenState extends State<AddEditStoryScreen> {
                     _tags.remove(tag);
                   });
                 },
-                backgroundColor: Theme.of(context).primaryColor.withOpacity(0.1),
+                backgroundColor: Theme.of(
+                  context,
+                ).primaryColor.withOpacity(0.1),
               );
             }).toList(),
           ),
@@ -423,9 +416,7 @@ class _AddEditStoryScreenState extends State<AddEditStoryScreen> {
   Widget _buildFeaturedSwitch() {
     return Card(
       elevation: 1,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: SwitchListTile(
         title: const Text('Featured Story'),
         subtitle: const Text(
@@ -467,20 +458,15 @@ class _AddEditStoryScreenState extends State<AddEditStoryScreen> {
         _isSaving
             ? 'Saving...'
             : isEditing
-                ? 'Save Changes'
-                : 'Publish Story',
+            ? 'Save Changes'
+            : 'Publish Story',
       ),
       style: ElevatedButton.styleFrom(
         backgroundColor: Theme.of(context).primaryColor,
         foregroundColor: Colors.white,
         padding: const EdgeInsets.symmetric(vertical: 16),
-        textStyle: const TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.bold,
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
     );
   }
@@ -577,9 +563,7 @@ class _AddEditStoryScreenState extends State<AddEditStoryScreen> {
               children: [
                 const Icon(Icons.error, color: Colors.white),
                 const SizedBox(width: 8),
-                Expanded(
-                  child: Text('Error: $e'),
-                ),
+                Expanded(child: Text('Error: $e')),
               ],
             ),
             backgroundColor: Colors.red,
@@ -669,9 +653,7 @@ class _AddEditStoryScreenState extends State<AddEditStoryScreen> {
               children: [
                 const Icon(Icons.error, color: Colors.white),
                 const SizedBox(width: 8),
-                Expanded(
-                  child: Text('Error: $e'),
-                ),
+                Expanded(child: Text('Error: $e')),
               ],
             ),
             backgroundColor: Colors.red,

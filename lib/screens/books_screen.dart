@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import '../models/bible_verse.dart';
-import '../services/bible_service.dart';
 import '../services/ad_service.dart';
 import '../widgets/ad_banner_widget.dart';
 import 'chapters_screen.dart';
-import 'reading_screen.dart';
 
 class BooksScreen extends StatelessWidget {
   final String testament;
@@ -34,9 +32,7 @@ class BooksScreen extends StatelessWidget {
         elevation: 0,
       ),
       body: Container(
-        decoration: const BoxDecoration(
-          color: Color(0xFFF8F9FA),
-        ),
+        decoration: const BoxDecoration(color: Color(0xFFF8F9FA)),
         child: Column(
           children: [
             Container(
@@ -59,7 +55,9 @@ class BooksScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Icon(
-                    testament == 'Old Testament' ? Icons.book : Icons.auto_stories,
+                    testament == 'Old Testament'
+                        ? Icons.book
+                        : Icons.auto_stories,
                     size: 48,
                     color: testamentColor,
                   ),
@@ -109,10 +107,7 @@ class BooksScreen extends StatelessWidget {
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(18),
-                          border: Border.all(
-                            color: testamentColor,
-                            width: 2,
-                          ),
+                          border: Border.all(color: testamentColor, width: 2),
                         ),
                         child: InkWell(
                           onTap: () {
@@ -160,7 +155,8 @@ class BooksScreen extends StatelessWidget {
                                 const SizedBox(width: 20),
                                 Expanded(
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         book,
@@ -178,7 +174,9 @@ class BooksScreen extends StatelessWidget {
                                         ),
                                         decoration: BoxDecoration(
                                           color: testamentColor,
-                                          borderRadius: BorderRadius.circular(12),
+                                          borderRadius: BorderRadius.circular(
+                                            12,
+                                          ),
                                         ),
                                         child: Text(
                                           '${chapters.length} Chapters',

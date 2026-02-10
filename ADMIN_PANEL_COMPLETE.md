@@ -305,7 +305,7 @@ await Firebase.initializeApp(
 
 ## 🎉 You're Ready!
 
-Your Simulizi za Mapenzi admin panel is complete with:
+Your Hadithi kwa Watoto admin panel is complete with:
 - ✅ Full story management
 - ✅ Dynamic category system
 - ✅ Beautiful, modern UI

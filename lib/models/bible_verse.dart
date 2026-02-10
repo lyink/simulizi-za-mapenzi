@@ -35,7 +35,7 @@ class BibleVerse {
 
   String get reference => '$bookName $chapter:$verse';
 
-  String get fullReference => '$bookName ${chapter}:${verse}';
+  String get fullReference => '$bookName $chapter:$verse';
 }
 
 class BibleMetadata {
@@ -86,20 +86,16 @@ class Bible {
   final BibleMetadata metadata;
   final List<BibleVerse> verses;
 
-  Bible({
-    required this.metadata,
-    required this.verses,
-  });
+  Bible({required this.metadata, required this.verses});
 
   factory Bible.fromJson(Map<String, dynamic> json) {
     final metadata = BibleMetadata.fromJson(json['metadata'] ?? {});
-    final verses = (json['verses'] as List<dynamic>?)
-        ?.map((verse) => BibleVerse.fromJson(verse))
-        .toList() ?? [];
+    final verses =
+        (json['verses'] as List<dynamic>?)
+            ?.map((verse) => BibleVerse.fromJson(verse))
+            .toList() ??
+        [];
 
-    return Bible(
-      metadata: metadata,
-      verses: verses,
-    );
+    return Bible(metadata: metadata, verses: verses);
   }
 }
