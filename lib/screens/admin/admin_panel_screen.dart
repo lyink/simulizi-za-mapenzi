@@ -7,6 +7,7 @@ import 'import_stories_screen.dart';
 import 'notification_settings_screen.dart';
 import '../../widgets/ad_banner_widget.dart';
 import '../../services/ad_service.dart';
+import '../../utils/clear_database.dart';
 
 class AdminPanelScreen extends StatelessWidget {
   const AdminPanelScreen({super.key});
@@ -407,6 +408,31 @@ class AdminPanelScreen extends StatelessWidget {
                   ),
                 );
               },
+            );
+          },
+        ),
+        const SizedBox(height: 24),
+        Text(
+          'Danger Zone',
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.bold,
+                color: Colors.red,
+              ),
+        ),
+        const SizedBox(height: 12),
+        _buildActionCard(
+          context,
+          icon: Icons.delete_forever,
+          title: 'Clear All Database',
+          subtitle: '⚠️ Permanently delete all data - Cannot be undone!',
+          color: Colors.red,
+          onTap: () {
+            HapticFeedback.heavyImpact();
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const DatabaseCleanupScreen(),
+              ),
             );
           },
         ),
