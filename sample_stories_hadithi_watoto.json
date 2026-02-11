@@ -1,0 +1,292 @@
+[
+  {
+    "title": "Sungura Mwerevu na Kobe",
+    "author": "Hadithi za Kiswahili",
+    "category": "Adventure",
+    "coverImageUrl": "https://images.unsplash.com/photo-1535241749838-299277b6305f?w=800",
+    "synopsis": "Hadithi ya mashindano kati ya Sungura na Kobe. Sungura alijiona ni mwenye kasi zaidi, lakini Kobe alimfundisha funzo muhimu kuhusu kiburi.",
+    "readingTimeMinutes": 5,
+    "tags": ["adventure", "animals", "moral-lesson"],
+    "isFeatured": true,
+    "chapters": [
+      {
+        "number": 1,
+        "title": "Sura ya Kwanza: Changamoto",
+        "verses": [
+          {
+            "number": 1,
+            "text": "Hapo zamani, Sungura na Kobe walikuwa marafiki. Sungura alikuwa mwepesi sana, na kila siku alijisifu mbele ya wanyama wote."
+          },
+          {
+            "number": 2,
+            "text": "'Mimi ni mwenye kasi zaidi msituni!' Sungura alisema kwa kiburi. 'Hakuna mnyama anayeweza kunishinda!'"
+          },
+          {
+            "number": 3,
+            "text": "Kobe alisikiliza kwa makini. Baadaye, aliuliza kwa upole, 'Sungura, je, ungependa kushindana nami?'"
+          },
+          {
+            "number": 4,
+            "text": "Sungura alicheka sana. 'Wewe? Kobe polepole? Haha! Sawa, nitakushinda kwa urahisi!'"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "title": "Sura ya Pili: Mashindano",
+        "verses": [
+          {
+            "number": 1,
+            "text": "Siku ya mashindano ilifika. Wanyama wote walikusanyika kuona mbio hii ya ajabu."
+          },
+          {
+            "number": 2,
+            "text": "'Tayari... Wekeni... Nendeni!' Ndege aliita, na mashindano yalianza."
+          },
+          {
+            "number": 3,
+            "text": "Sungura alikimbia kwa kasi, akimwacha Kobe nyuma. 'Nina ushindi tayari!' alisema."
+          },
+          {
+            "number": 4,
+            "text": "Kwa kuwa alikuwa mbali sana mbele, Sungura aliamua kupumzika. 'Nitachukua usingizi mdogo. Kobe bado yuko mbali sana!'"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "title": "Sura ya Tatu: Mwisho wa Ajabu",
+        "verses": [
+          {
+            "number": 1,
+            "text": "Wakati Sungura alilala, Kobe aliendelea kutembea polepole lakini bila kusimama."
+          },
+          {
+            "number": 2,
+            "text": "Hatua moja, mbili, tatu... Kobe alipita karibu na Sungura aliyekuwa amelala."
+          },
+          {
+            "number": 3,
+            "text": "Sungura aliamka baadaye. 'Sasa nitakimbia haraka na kumalizia!' Lakini alipokimbia, alishtuka!"
+          },
+          {
+            "number": 4,
+            "text": "Kobe alikuwa tayari amefika mwisho! Wanyama wote walipiga kelele za furaha. 'Hongera Kobe!'"
+          },
+          {
+            "number": 5,
+            "text": "Sungura alijifunza funzo muhimu siku hiyo: Kiburi na uvivu havifai. Bidii na uvumilivu hushinda kasi."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Simba Mdogo Anajifunza Kuwa Jasiri",
+    "author": "Hadithi za Kiswahili",
+    "category": "Educational",
+    "coverImageUrl": "https://images.unsplash.com/photo-1614027164847-1b28cfe1df60?w=800",
+    "synopsis": "Simba mdogo anaogopa sana. Lakini rafiki zake wanamwelekeza jinsi ya kuwa jasiri na kushinda hofu zake.",
+    "readingTimeMinutes": 7,
+    "tags": ["courage", "friendship", "lion", "educational"],
+    "isFeatured": true,
+    "chapters": [
+      {
+        "number": 1,
+        "title": "Sura ya Kwanza: Simba Mwoga",
+        "verses": [
+          {
+            "number": 1,
+            "text": "Katika msitu mkubwa wa Afrika, aliishi Simba mdogo jina lake Leo. Ingawa alikuwa simba, Leo aliogopa vitu vingi."
+          },
+          {
+            "number": 2,
+            "text": "Aliogopa giza. Aliogopa sauti kubwa. Hata aliogopa kivuli chake mwenyewe!"
+          },
+          {
+            "number": 3,
+            "text": "Wanyama wengine walianza kumcheka. 'Simba mwoga!' walisema. Leo alihisi vibaya sana."
+          },
+          {
+            "number": 4,
+            "text": "Siku moja, Leo aliketi peke yake chini ya mti, akilia. 'Sitawahi kuwa simba wa kweli,' alisema kwa huzuni."
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "title": "Sura ya Pili: Rafiki Mpya",
+        "verses": [
+          {
+            "number": 1,
+            "text": "Tembo mdogo, jina lake Ella, alimkaribia Leo. 'Kwa nini unalia, rafiki?' aliuliza kwa upole."
+          },
+          {
+            "number": 2,
+            "text": "Leo alimweleza, 'Ninaogopa kila kitu. Simba hawatakiwi kuwa woga, lakini mimi niko hivyo.'"
+          },
+          {
+            "number": 3,
+            "text": "Ella alitabasamu. 'Unajua nini? Mimi pia nilikuwa naogopa panya wadogo! Lakini nilijifunza jambo muhimu.'"
+          },
+          {
+            "number": 4,
+            "text": "'Ujasiri si kutokuwa na hofu. Ujasiri ni kufanya jambo hata kama unaogopa!' Ella alimweleza."
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "title": "Sura ya Tatu: Mazoezi ya Ujasiri",
+        "verses": [
+          {
+            "number": 1,
+            "text": "Kila siku, Leo na Ella walifanya mazoezi. Kwanza, Leo alijaribu kutembea gizani kwa dakika moja."
+          },
+          {
+            "number": 2,
+            "text": "Ilikuwa vigumu, lakini akafanya! 'Nilifanya!' Leo alipiga kelele kwa furaha."
+          },
+          {
+            "number": 3,
+            "text": "Hatua kwa hatua, Leo alijifunza kukabiliana na hofu zake. Alifanya mambo madogo madogo kila siku."
+          },
+          {
+            "number": 4,
+            "text": "Wiki kadhaa baadaye, kitu cha ajabu kilitokea. Moto ulitokea msituni!"
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "title": "Sura ya Nne: Leo Jasiri",
+        "verses": [
+          {
+            "number": 1,
+            "text": "Wanyama wote walipiga mbio kwa hofu. Lakini Leo aliangalia na kuona - Ella alikuwa amesahau kuimba mdogo!"
+          },
+          {
+            "number": 2,
+            "text": "Moyo wa Leo ulipiga kwa kasi. Aliogopa moto. Lakini alikumbuka maneno ya Ella: 'Ujasiri ni kufanya jambo hata kama unaogopa!'"
+          },
+          {
+            "number": 3,
+            "text": "Leo alikimbia kwenye moto! Alipata kwa kupitia moshi, kuokoa ndege mdogo, na kurudi salama."
+          },
+          {
+            "number": 4,
+            "text": "Wanyama wote walipiga kelele. 'Leo ni shujaa!' Hata wale waliomcheka awali waliheshimu ujasiri wake."
+          },
+          {
+            "number": 5,
+            "text": "Leo alijifunza kwamba ujasiri hautokani na kutokuwa na hofu - hutokana na kufanya jambo la haki hata kama unaogopa. Na siku hiyo, alikuwa simba wa kweli."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Mvua na Upinde wa Mvua",
+    "author": "Hadithi za Kiswahili",
+    "category": "Educational",
+    "coverImageUrl": "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=800",
+    "synopsis": "Hadithi inayoelezea jinsi mvua inavyotokea na jinsi upinde wa mvua unavyoundwa. Kwa njia ya hadithi nzuri, watoto wanajifunza sayansi ya hali ya hewa.",
+    "readingTimeMinutes": 6,
+    "tags": ["educational", "science", "weather", "nature"],
+    "isFeatured": false,
+    "chapters": [
+      {
+        "number": 1,
+        "title": "Sura ya Kwanza: Jua na Bahari",
+        "verses": [
+          {
+            "number": 1,
+            "text": "Jua alikuwa rafiki wa Bahari. Kila siku, Jua alitoa joto lake, na Bahari alitabasamu."
+          },
+          {
+            "number": 2,
+            "text": "'Jua, joto lako ni jema!' Bahari alisema. 'Linasaidia maji yangu kuruka juu angani!'"
+          },
+          {
+            "number": 3,
+            "text": "Ndio, maji yalikuwa yakiruka juu angani, yakiwa hayaonekani. Yalikuwa yamebadilika kuwa mvuke - kama ukungu mdogo mdogo."
+          },
+          {
+            "number": 4,
+            "text": "Mvuke huu ulikwea juu, juu, juu angani, hadi kuingia kwenye anga baridi."
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "title": "Sura ya Pili: Mawingu Yanavyoundwa",
+        "verses": [
+          {
+            "number": 1,
+            "text": "Angani, baridi ilikuwa nyingi. Mvuke ulipopata baridi, jambo la ajabu lilitokea!"
+          },
+          {
+            "number": 2,
+            "text": "Mvuke ulibadilika tena kuwa maji madogo sana - tone, tone, la maji ambalo linaitwa chembe."
+          },
+          {
+            "number": 3,
+            "text": "Chembe hizi za maji zilikutana pamoja na kuunda... mawingu!"
+          },
+          {
+            "number": 4,
+            "text": "'Tunaonekana kama pamba mweupe!' Mawingu yalisema kwa furaha, yakielea angani."
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "title": "Sura ya Tatu: Mvua Inanyesha",
+        "verses": [
+          {
+            "number": 1,
+            "text": "Mawingu yalikuwa yakijaza zaidi na zaidi ya maji. Yalikuwa mazito sana!"
+          },
+          {
+            "number": 2,
+            "text": "'Tunakuwa wazito mno!' Mawingu yalisema. 'Hatuwezi kubeba maji yote haya!'"
+          },
+          {
+            "number": 3,
+            "text": "Na ndipo - maji yalianza kuanguka! Tone moja, mbili, elfu, milioni! Mvua ilianza kunyesha."
+          },
+          {
+            "number": 4,
+            "text": "Maji yalifika ardhi na kuifurahisha. Mimea ilikunywa maji. Wanyama walinywa. Ardhi ilikuwa baridi na nzuri."
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "title": "Sura ya Nne: Upinde wa Mvua",
+        "verses": [
+          {
+            "number": 1,
+            "text": "Baada ya mvua, Jua alitokea tena nyuma ya mawingu. Na jambo la ajabu lilitokea!"
+          },
+          {
+            "number": 2,
+            "text": "Mwanga wa jua ulipita katika maji ya mvua, na rangi saba nzuri zilionekana angani!"
+          },
+          {
+            "number": 3,
+            "text": "Nyekundu, machungwa, njano, kijani, bluu, indigo, na zambarau - upinde wa mvua!"
+          },
+          {
+            "number": 4,
+            "text": "'Tuko pamoja!' Jua na Mvua walisema. 'Tunaunda kitu kizuri - upinde wa mvua!'"
+          },
+          {
+            "number": 5,
+            "text": "Na hivyo ndivyo mzunguko unavyoendelea - maji yanaenda juu, yanabadilika kuwa mawingu, yananyesha chini, na kisha yanaenda juu tena. Mzunguko wa maji!"
+          }
+        ]
+      }
+    ]
+  }
+]

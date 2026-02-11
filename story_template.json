@@ -1,0 +1,100 @@
+[
+  {
+    "title": "Hadithi ya Mfano - Story Title",
+    "author": "Jina la Mwandishi - Author Name",
+    "category": "Adventure",
+    "coverImageUrl": "https://firebasestorage.googleapis.com/v0/b/your-project.appspot.com/o/covers%2Fimage.jpg?alt=media",
+    "synopsis": "Maelezo mafupi ya hadithi hii. Andika sentensi 2-3 kuhusu nini hadithi hii inahusu na nini watoto watajifunza. Brief description of this story in 2-3 sentences about what the story is about and what children will learn.",
+    "readingTimeMinutes": 10,
+    "tags": ["adventure", "educational", "animals"],
+    "isFeatured": false,
+    "chapters": [
+      {
+        "number": 1,
+        "title": "Sura ya Kwanza: Mwanzo - Chapter One: Beginning",
+        "imageUrl": "https://firebasestorage.googleapis.com/v0/b/your-project.appspot.com/o/chapters%2Fchapter1.jpg?alt=media",
+        "verses": [
+          {
+            "number": 1,
+            "text": "Hapo zamani za kale, kulikuwa na msitu mkubwa wenye wanyama wengi. Once upon a time, there was a big forest with many animals."
+          },
+          {
+            "number": 2,
+            "text": "Wanyama hawa waliishi kwa amani na furaha. These animals lived in peace and happiness."
+          },
+          {
+            "number": 3,
+            "text": "Lakini siku moja, kitu cha ajabu kilitokea... But one day, something amazing happened..."
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "title": "Sura ya Pili: Tukio - Chapter Two: The Event",
+        "imageUrl": "https://firebasestorage.googleapis.com/v0/b/your-project.appspot.com/o/chapters%2Fchapter2.jpg?alt=media",
+        "verses": [
+          {
+            "number": 1,
+            "text": "Wanyama wote walikusanyika pamoja. All the animals gathered together."
+          },
+          {
+            "number": 2,
+            "text": "Walikuwa na mkutano muhimu. They had an important meeting."
+          },
+          {
+            "number": 3,
+            "text": "Kila mmoja alitoa wazo lake. Everyone shared their idea."
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "title": "Sura ya Tatu: Mwisho - Chapter Three: The End",
+        "verses": [
+          {
+            "number": 1,
+            "text": "Baada ya mazungumzo mengi, wanyama walifika uamuzi. After much discussion, the animals reached a decision."
+          },
+          {
+            "number": 2,
+            "text": "Wote walikubaliana kufanya kazi pamoja. They all agreed to work together."
+          },
+          {
+            "number": 3,
+            "text": "Na kuanzia siku hiyo, msitu ulikuwa mahali bora zaidi. And from that day, the forest became an even better place."
+          },
+          {
+            "number": 4,
+            "text": "MWISHO. THE END."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Hadithi Nyingine - Another Story",
+    "author": "Mwandishi Mwingine",
+    "category": "Educational",
+    "coverImageUrl": "https://firebasestorage.googleapis.com/v0/b/your-project.appspot.com/o/covers%2Fstory2.jpg?alt=media",
+    "synopsis": "Hadithi hii inafundisha watoto kuhusu [topic]. This story teaches children about [topic].",
+    "readingTimeMinutes": 5,
+    "tags": ["educational", "learning"],
+    "isFeatured": true,
+    "chapters": [
+      {
+        "number": 1,
+        "title": "Sura Moja",
+        "verses": [
+          {
+            "number": 1,
+            "text": "Anza hadithi yako hapa. Start your story here."
+          },
+          {
+            "number": 2,
+            "text": "Endelea na paragraph nyingine. Continue with another paragraph."
+          }
+        ]
+      }
+    ]
+  }
+]
