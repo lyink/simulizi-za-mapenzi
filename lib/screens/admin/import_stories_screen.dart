@@ -110,18 +110,19 @@ class _ImportStoriesScreenState extends State<ImportStoriesScreen> {
                 child: const Text(
                   '''[
   {
-    "title": "Simulizi ya Mapenzi - Sehemu ya 1",
+    "title": "Hadithi kwa Watoto - Sehemu ya 1",
     "author": "Hassan Mwinyi",
-    "category": "Romance",
+    "category": "Adventure",
     "coverImageUrl": "https://example.com/image.jpg",
-    "synopsis": "Hadithi ya mapenzi kati ya mtu mwenye shauku...",
+    "synopsis": "Hadithi ya utoto kuhusu sungura mwerevu...",
     "readingTimeMinutes": 20,
-    "tags": ["love", "drama"],
+    "tags": ["adventure", "kids"],
     "isFeatured": false,
     "chapters": [
       {
         "number": 1,
         "title": "Sura ya Kwanza: Kuonana",
+        "imageUrl": "https://firebasestorage.../chapter1.jpg",
         "verses": [
           {
             "number": 1,
@@ -135,7 +136,8 @@ class _ImportStoriesScreenState extends State<ImportStoriesScreen> {
       },
       {
         "number": 2,
-        "title": "Sura ya Pili: Mwanzo wa Upendo",
+        "title": "Sura ya Pili: Mwanzo wa Safari",
+        "imageUrl": "https://firebasestorage.../chapter2.jpg",
         "verses": [
           {
             "number": 1,
@@ -153,7 +155,7 @@ class _ImportStoriesScreenState extends State<ImportStoriesScreen> {
         "verses": [
           {
             "number": 1,
-            "text": "Sasa upendo ulikuwa umekua..."
+            "text": "Sasa safari ilikuwa imekua..."
           }
         ]
       }
@@ -161,7 +163,8 @@ class _ImportStoriesScreenState extends State<ImportStoriesScreen> {
   }
 ]
 
-TIP: Add more chapters (4, 5, 6...) for longer series!''',
+TIP: Add more chapters (4, 5, 6...) for longer series!
+TIP: imageUrl is optional for each chapter - add for visual appeal!''',
                   style: TextStyle(fontFamily: 'monospace', fontSize: 11),
                 ),
               ),

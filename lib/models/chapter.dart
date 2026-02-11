@@ -26,11 +26,13 @@ class Chapter {
   final int number;
   final String title;
   final List<Verse> verses;
+  final String? imageUrl; // Optional image for the chapter
 
   Chapter({
     required this.number,
     required this.title,
     required this.verses,
+    this.imageUrl,
   });
 
   factory Chapter.fromMap(Map<String, dynamic> data) {
@@ -41,6 +43,7 @@ class Chapter {
               ?.map((v) => Verse.fromMap(v as Map<String, dynamic>))
               .toList() ??
           [],
+      imageUrl: data['imageUrl'],
     );
   }
 
@@ -49,6 +52,7 @@ class Chapter {
       'number': number,
       'title': title,
       'verses': verses.map((v) => v.toMap()).toList(),
+      if (imageUrl != null) 'imageUrl': imageUrl,
     };
   }
 
