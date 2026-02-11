@@ -4,6 +4,7 @@ import '../models/story.dart';
 import '../models/chapter.dart';
 import '../services/ad_service.dart';
 import '../widgets/ad_banner_widget.dart';
+import 'picture_story_reading_screen.dart';
 
 class StoryReadingScreen extends StatefulWidget {
   final Story story;
@@ -47,6 +48,21 @@ class _StoryReadingScreenState extends State<StoryReadingScreen> {
         foregroundColor: Colors.white,
         elevation: 0,
         actions: [
+          // Picture book mode toggle
+          IconButton(
+            icon: const Icon(Icons.auto_stories),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => PictureStoryReadingScreen(
+                    story: widget.story,
+                  ),
+                ),
+              );
+            },
+            tooltip: 'Picture Book Mode',
+          ),
           if (_hasChapters && widget.story.chapters.length > 1)
             IconButton(
               icon: const Icon(Icons.list),
