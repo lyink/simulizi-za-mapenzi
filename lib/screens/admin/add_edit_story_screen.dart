@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import '../../models/story.dart';
 import '../../services/story_service.dart';
 import '../../services/category_service.dart';
+import '../../services/instagram_image_service.dart';
 import '../../widgets/ad_banner_widget.dart';
 
 class AddEditStoryScreen extends StatefulWidget {
@@ -21,6 +22,7 @@ class _AddEditStoryScreenState extends State<AddEditStoryScreen> {
   final _synopsisController = TextEditingController();
   final _contentController = TextEditingController();
   final _coverImageUrlController = TextEditingController();
+  final _instagramUrlController = TextEditingController();
   final _readingTimeController = TextEditingController();
 
   String _selectedCategory = '';
@@ -29,6 +31,7 @@ class _AddEditStoryScreenState extends State<AddEditStoryScreen> {
   final _tagController = TextEditingController();
   bool _isSaving = false;
   bool _isLoadingCategories = true;
+  bool _isFetchingInstagramImage = false;
 
   List<String> _categories = [];
   final CategoryService _categoryService = CategoryService();
@@ -83,6 +86,90 @@ class _AddEditStoryScreenState extends State<AddEditStoryScreen> {
     _tags = List.from(story.tags);
   }
 
+  Future<void> _fetchInstagramImage() async {
+    final instagramUrl = _instagramUrlController.text.trim();
+
+    if (instagramUrl.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please enter an Instagram URL'),
+          backgroundColor: Colors.orange,
+        ),
+      );
+      return;
+    }
+
+    if (!InstagramImageService.isValidInstagramUrl(instagramUrl)) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Invalid Instagram URL. Use format: https://instagram.com/p/CODE'),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+
+    setState(() {
+      _isFetchingInstagramImage = true;
+    });
+
+    try {
+      // Generate storage path based on story title or post code
+      final postCode = InstagramImageService.getPostCode(instagramUrl) ?? 'image';
+      final storagePath = 'covers/${postCode}_${DateTime.now().millisecondsSinceEpoch}.jpg';
+
+      // Process Instagram URL (extract and upload to Firebase)
+      final firebaseUrl = await InstagramImageService.processInstagramUrl(
+        instagramUrl: instagramUrl,
+        firebaseStoragePath: storagePath,
+      );
+
+      setState(() {
+        _isFetchingInstagramImage = false;
+      });
+
+      if (firebaseUrl != null) {
+        setState(() {
+          _coverImageUrlController.text = firebaseUrl;
+        });
+
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('✓ Image uploaded to Firebase successfully!'),
+              backgroundColor: Colors.green,
+              duration: Duration(seconds: 3),
+            ),
+          );
+        }
+      } else {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Failed to fetch Instagram image. Try using a direct CDN URL instead.'),
+              backgroundColor: Colors.red,
+              duration: Duration(seconds: 4),
+            ),
+          );
+        }
+      }
+    } catch (e) {
+      setState(() {
+        _isFetchingInstagramImage = false;
+      });
+
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error: $e'),
+            backgroundColor: Colors.red,
+            duration: const Duration(seconds: 4),
+          ),
+        );
+      }
+    }
+  }
+
   @override
   void dispose() {
     _titleController.dispose();
@@ -90,6 +177,7 @@ class _AddEditStoryScreenState extends State<AddEditStoryScreen> {
     _synopsisController.dispose();
     _contentController.dispose();
     _coverImageUrlController.dispose();
+    _instagramUrlController.dispose();
     _readingTimeController.dispose();
     _tagController.dispose();
     super.dispose();
@@ -168,10 +256,12 @@ class _AddEditStoryScreenState extends State<AddEditStoryScreen> {
                     },
                   ),
                   const SizedBox(height: 16),
+                  _buildInstagramUrlSection(),
+                  const SizedBox(height: 16),
                   _buildTextField(
                     controller: _coverImageUrlController,
                     label: 'Cover Image URL',
-                    hint: 'Enter the full URL of the story cover image',
+                    hint: 'Firebase URL (auto-filled from Instagram or enter manually)',
                     icon: Icons.image,
                     keyboardType: TextInputType.url,
                   ),
@@ -275,6 +365,90 @@ class _AddEditStoryScreenState extends State<AddEditStoryScreen> {
       maxLines: maxLines,
       keyboardType: keyboardType,
       validator: validator,
+    );
+  }
+
+  Widget _buildInstagramUrlSection() {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.blue[50],
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.blue[200]!),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Icon(Icons.camera_alt, color: Colors.blue[700]),
+              const SizedBox(width: 8),
+              Text(
+                'Fetch from Instagram',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue[900],
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 12),
+          TextField(
+            controller: _instagramUrlController,
+            decoration: InputDecoration(
+              labelText: 'Instagram Post URL',
+              hintText: 'https://instagram.com/p/ABC123/',
+              prefixIcon: const Icon(Icons.link),
+              border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+              filled: true,
+              fillColor: Colors.white,
+              helperText: 'Paste Instagram post URL to auto-fetch image',
+              helperMaxLines: 2,
+            ),
+            keyboardType: TextInputType.url,
+          ),
+          const SizedBox(height: 12),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton.icon(
+              onPressed: _isFetchingInstagramImage ? null : _fetchInstagramImage,
+              icon: _isFetchingInstagramImage
+                  ? const SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                      ),
+                    )
+                  : const Icon(Icons.download),
+              label: Text(
+                _isFetchingInstagramImage
+                    ? 'Fetching & Uploading...'
+                    : 'Fetch Image & Upload to Firebase',
+              ),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue[700],
+                foregroundColor: Colors.white,
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            '💡 Tip: Image will be downloaded and uploaded to Firebase Storage automatically',
+            style: TextStyle(
+              fontSize: 12,
+              color: Colors.blue[800],
+              fontStyle: FontStyle.italic,
+            ),
+          ),
+        ],
+      ),
     );
   }
 
