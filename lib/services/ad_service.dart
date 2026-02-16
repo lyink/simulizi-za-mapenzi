@@ -2,292 +2,199 @@ import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class AdService {
-  // App ID: ca-app-pub-3408903389045590~8291321195
+  static final AdService _instance = AdService._internal();
+  factory AdService() => _instance;
+  AdService._internal();
 
-  // Production Ad IDs
-  static const String _bannerAdId = 'ca-app-pub-3408903389045590/6978239523';
-  static const String _interstitialAdId = 'ca-app-pub-3408903389045590/4160504492';
-  static const String _appOpenAdId = 'ca-app-pub-3408903389045590/5514002665';
-  static const String _nativeAdvancedAdId = 'ca-app-pub-3408903389045590/2464279442';
-  static const String _rewardedAdId = 'ca-app-pub-3408903389045590/1606547247';
+  // Ad Unit IDs
+  static const String _appOpenAdUnitId = 'ca-app-pub-3408903389045590/5514002665';
+  static const String _bannerAdUnitId = 'ca-app-pub-3408903389045590/6978239523';
+  static const String _interstitialAdUnitId = 'ca-app-pub-3408903389045590/4160504492';
+  static const String _nativeAdUnitId = 'ca-app-pub-3408903389045590/2464279442';
+  static const String _rewardedAdUnitId = 'ca-app-pub-3408903389045590/1606547247';
 
-  static BannerAd? _bannerAd;
-  static InterstitialAd? _interstitialAd;
-  static AppOpenAd? _appOpenAd;
-  static NativeAd? _nativeAd;
-  static RewardedAd? _rewardedAd;
-  static bool _isShowingAd = false;
+  // Interstitial ad tracking
+  InterstitialAd? _interstitialAd;
+  bool _isInterstitialAdReady = false;
+  int _interstitialAdCounter = 0;
 
-  // App-open ad cooldown (show only once every 4 hours)
-  static DateTime? _lastAppOpenAdTime;
-  static const Duration _appOpenAdCooldown = Duration(hours: 4);
+  // Rewarded ad tracking
+  RewardedAd? _rewardedAd;
+  bool _isRewardedAdReady = false;
+  int _storiesOpenedCounter = 0; // Track how many stories have been opened
 
+  // App Open Ad
+  AppOpenAd? _appOpenAd;
+  bool _isAppOpenAdReady = false;
+
+  /// Initialize the AdMob SDK
   static Future<void> initialize() async {
-    print('AdService: Initializing Mobile Ads...');
-    try {
-      final InitializationStatus status = await MobileAds.instance.initialize();
-      print('AdService: Mobile Ads initialized successfully');
-      print('AdService: Adapter statuses: ${status.adapterStatuses}');
-    } catch (e) {
-      print('AdService: Failed to initialize Mobile Ads: $e');
-    }
+    await MobileAds.instance.initialize();
   }
 
-  // Banner Ad Methods
-  static BannerAd createBannerAd() {
+  /// Create a Banner Ad
+  BannerAd createBannerAd() {
     return BannerAd(
-      adUnitId: _bannerAdId,
+      adUnitId: _bannerAdUnitId,
       size: AdSize.banner,
       request: const AdRequest(),
       listener: BannerAdListener(
-        onAdLoaded: (Ad ad) {
-          print('AdService: Banner ad loaded successfully');
+        onAdLoaded: (ad) {
+          debugPrint('Banner ad loaded.');
         },
-        onAdFailedToLoad: (Ad ad, LoadAdError error) {
-          print('AdService: Banner ad failed to load: $error');
+        onAdFailedToLoad: (ad, error) {
+          debugPrint('Banner ad failed to load: $error');
           ad.dispose();
         },
-        onAdOpened: (Ad ad) => print('AdService: Banner ad opened'),
-        onAdClosed: (Ad ad) => print('AdService: Banner ad closed'),
       ),
     );
   }
 
-  // Interstitial Ad Methods
-  static void loadInterstitialAd() {
-    print('AdService: Loading interstitial ad with ID: $_interstitialAdId');
+  /// Load Interstitial Ad
+  void loadInterstitialAd() {
     InterstitialAd.load(
-      adUnitId: _interstitialAdId,
+      adUnitId: _interstitialAdUnitId,
       request: const AdRequest(),
       adLoadCallback: InterstitialAdLoadCallback(
-        onAdLoaded: (InterstitialAd ad) {
-          print('AdService: Interstitial ad loaded successfully');
+        onAdLoaded: (ad) {
           _interstitialAd = ad;
-          _interstitialAd!.setImmersiveMode(true);
-        },
-        onAdFailedToLoad: (LoadAdError error) {
-          print('AdService: Interstitial ad failed to load: $error');
-          print(
-            'AdService: Error code: ${error.code}, Message: ${error.message}',
+          _isInterstitialAdReady = true;
+
+          ad.fullScreenContentCallback = FullScreenContentCallback(
+            onAdDismissedFullScreenContent: (ad) {
+              ad.dispose();
+              _isInterstitialAdReady = false;
+              loadInterstitialAd(); // Load next ad
+            },
+            onAdFailedToShowFullScreenContent: (ad, error) {
+              ad.dispose();
+              _isInterstitialAdReady = false;
+              loadInterstitialAd(); // Load next ad
+            },
           );
-          _interstitialAd = null;
+        },
+        onAdFailedToLoad: (error) {
+          debugPrint('Interstitial ad failed to load: $error');
+          _isInterstitialAdReady = false;
         },
       ),
     );
   }
 
-  static void showInterstitialAd({VoidCallback? onAdClosed}) {
-    if (_interstitialAd == null) {
-      print('Warning: attempt to show interstitial before loaded.');
-      onAdClosed?.call();
-      return;
-    }
+  /// Show Interstitial Ad (frequent - every 2 actions)
+  void showInterstitialAd() {
+    _interstitialAdCounter++;
 
-    _interstitialAd!.fullScreenContentCallback = FullScreenContentCallback(
-      onAdShowedFullScreenContent: (InterstitialAd ad) {
-        _isShowingAd = true;
-        print('Interstitial ad showed full screen content.');
-      },
-      onAdDismissedFullScreenContent: (InterstitialAd ad) {
-        _isShowingAd = false;
-        print('Interstitial ad dismissed full screen content.');
-        ad.dispose();
-        _interstitialAd = null;
-        onAdClosed?.call();
-        loadInterstitialAd(); // Load next ad
-      },
-      onAdFailedToShowFullScreenContent: (InterstitialAd ad, AdError error) {
-        _isShowingAd = false;
-        print('Interstitial ad failed to show full screen content: $error');
-        ad.dispose();
-        _interstitialAd = null;
-        onAdClosed?.call();
-      },
-    );
-
-    _interstitialAd!.show();
-  }
-
-  // App Open Ad Methods
-  static void loadAppOpenAd() {
-    print('AdService: Loading app open ad with ID: $_appOpenAdId');
-    AppOpenAd.load(
-      adUnitId: _appOpenAdId,
-      request: const AdRequest(),
-      adLoadCallback: AppOpenAdLoadCallback(
-        onAdLoaded: (AppOpenAd ad) {
-          print('AdService: App open ad loaded successfully');
-          _appOpenAd = ad;
-        },
-        onAdFailedToLoad: (LoadAdError error) {
-          print('AdService: App open ad failed to load: $error');
-          print(
-            'AdService: Error code: ${error.code}, Message: ${error.message}',
-          );
-          _appOpenAd = null;
-        },
-      ),
-    );
-  }
-
-  static void showAppOpenAd({VoidCallback? onAdClosed}) {
-    // Check cooldown - only show app-open ad once every 4 hours
-    if (_lastAppOpenAdTime != null) {
-      final timeSinceLastAd = DateTime.now().difference(_lastAppOpenAdTime!);
-      if (timeSinceLastAd < _appOpenAdCooldown) {
-        print('App open ad on cooldown. Time remaining: ${_appOpenAdCooldown - timeSinceLastAd}');
-        onAdClosed?.call();
-        return;
+    // Show ad every 2 actions for more frequent ads
+    if (_interstitialAdCounter >= 2) {
+      if (_isInterstitialAdReady && _interstitialAd != null) {
+        _interstitialAd!.show();
+        _interstitialAdCounter = 0;
+      } else {
+        loadInterstitialAd();
       }
     }
-
-    if (_appOpenAd == null) {
-      print('Warning: attempt to show app open ad before loaded.');
-      onAdClosed?.call();
-      return;
-    }
-
-    if (_isShowingAd) {
-      print('App open ad is already being shown.');
-      return;
-    }
-
-    _appOpenAd!.fullScreenContentCallback = FullScreenContentCallback(
-      onAdShowedFullScreenContent: (AppOpenAd ad) {
-        _isShowingAd = true;
-        _lastAppOpenAdTime = DateTime.now(); // Update last shown time
-        print('App open ad showed full screen content.');
-      },
-      onAdDismissedFullScreenContent: (AppOpenAd ad) {
-        _isShowingAd = false;
-        print('App open ad dismissed full screen content.');
-        ad.dispose();
-        _appOpenAd = null;
-        onAdClosed?.call();
-        loadAppOpenAd(); // Load next ad
-      },
-      onAdFailedToShowFullScreenContent: (AppOpenAd ad, AdError error) {
-        _isShowingAd = false;
-        print('App open ad failed to show full screen content: $error');
-        ad.dispose();
-        _appOpenAd = null;
-        onAdClosed?.call();
-      },
-    );
-
-    _appOpenAd!.show();
   }
 
-  // Native Advanced Ad Methods
-  static void loadNativeAd({required Function(NativeAd) onAdLoaded}) {
-    print('AdService: Loading native ad with ID: $_nativeAdvancedAdId');
-    NativeAd(
-      adUnitId: _nativeAdvancedAdId,
-      request: const AdRequest(),
-      listener: NativeAdListener(
-        onAdLoaded: (Ad ad) {
-          print('AdService: Native ad loaded successfully');
-          _nativeAd = ad as NativeAd;
-          onAdLoaded(_nativeAd!);
-        },
-        onAdFailedToLoad: (Ad ad, LoadAdError error) {
-          print('AdService: Native ad failed to load: $error');
-          ad.dispose();
-        },
-        onAdOpened: (Ad ad) => print('AdService: Native ad opened'),
-        onAdClosed: (Ad ad) => print('AdService: Native ad closed'),
-      ),
-      nativeTemplateStyle: NativeTemplateStyle(
-        templateType: TemplateType.medium,
-        mainBackgroundColor: const Color(0xFFFAF7F2),
-        cornerRadius: 12.0,
-        callToActionTextStyle: NativeTemplateTextStyle(
-          textColor: Colors.white,
-          backgroundColor: const Color(0xFF8D4E27),
-          style: NativeTemplateFontStyle.bold,
-          size: 16.0,
-        ),
-        primaryTextStyle: NativeTemplateTextStyle(
-          textColor: const Color(0xFF3C2415),
-          backgroundColor: Colors.transparent,
-          style: NativeTemplateFontStyle.bold,
-          size: 16.0,
-        ),
-        secondaryTextStyle: NativeTemplateTextStyle(
-          textColor: const Color(0xFF8D6E47),
-          backgroundColor: Colors.transparent,
-          style: NativeTemplateFontStyle.normal,
-          size: 14.0,
-        ),
-      ),
-    ).load();
-  }
-
-  // Rewarded Ad Methods
-  static void loadRewardedAd() {
-    print('AdService: Loading rewarded ad with ID: $_rewardedAdId');
+  /// Load Rewarded Ad
+  void loadRewardedAd() {
     RewardedAd.load(
-      adUnitId: _rewardedAdId,
+      adUnitId: _rewardedAdUnitId,
       request: const AdRequest(),
       rewardedAdLoadCallback: RewardedAdLoadCallback(
-        onAdLoaded: (RewardedAd ad) {
-          print('AdService: Rewarded ad loaded successfully');
+        onAdLoaded: (ad) {
           _rewardedAd = ad;
+          _isRewardedAdReady = true;
+
+          ad.fullScreenContentCallback = FullScreenContentCallback(
+            onAdDismissedFullScreenContent: (ad) {
+              ad.dispose();
+              _isRewardedAdReady = false;
+              loadRewardedAd(); // Load next ad
+            },
+            onAdFailedToShowFullScreenContent: (ad, error) {
+              ad.dispose();
+              _isRewardedAdReady = false;
+              loadRewardedAd(); // Load next ad
+            },
+          );
         },
-        onAdFailedToLoad: (LoadAdError error) {
-          print('AdService: Rewarded ad failed to load: $error');
-          _rewardedAd = null;
+        onAdFailedToLoad: (error) {
+          debugPrint('Rewarded ad failed to load: $error');
+          _isRewardedAdReady = false;
         },
       ),
     );
   }
 
-  static void showRewardedAd({
-    required OnUserEarnedRewardCallback onUserEarnedReward,
-    VoidCallback? onAdClosed,
-  }) {
-    if (_rewardedAd == null) {
-      print('Warning: attempt to show rewarded ad before loaded.');
-      onAdClosed?.call();
-      return;
+  /// Track story opens and show rewarded ad after 3 stories
+  void trackStoryOpen() {
+    _storiesOpenedCounter++;
+
+    // Show rewarded ad after every 3 stories opened
+    if (_storiesOpenedCounter >= 3) {
+      _storiesOpenedCounter = 0;
+      showRewardedAd();
     }
+  }
 
-    _rewardedAd!.fullScreenContentCallback = FullScreenContentCallback(
-      onAdShowedFullScreenContent: (RewardedAd ad) {
-        _isShowingAd = true;
-        print('Rewarded ad showed full screen content.');
-      },
-      onAdDismissedFullScreenContent: (RewardedAd ad) {
-        _isShowingAd = false;
-        print('Rewarded ad dismissed full screen content.');
-        ad.dispose();
-        _rewardedAd = null;
-        onAdClosed?.call();
-        loadRewardedAd(); // Load next ad
-      },
-      onAdFailedToShowFullScreenContent: (RewardedAd ad, AdError error) {
-        _isShowingAd = false;
-        print('Rewarded ad failed to show full screen content: $error');
-        ad.dispose();
-        _rewardedAd = null;
-        onAdClosed?.call();
-      },
+  /// Show Rewarded Ad automatically (no dialog)
+  void showRewardedAd({VoidCallback? onAdWatched}) {
+    if (_isRewardedAdReady && _rewardedAd != null) {
+      _rewardedAd!.show(
+        onUserEarnedReward: (ad, reward) {
+          onAdWatched?.call();
+        },
+      );
+    } else {
+      // If ad not ready, just call the callback
+      onAdWatched?.call();
+      loadRewardedAd();
+    }
+  }
+
+  /// Load App Open Ad
+  void loadAppOpenAd() {
+    AppOpenAd.load(
+      adUnitId: _appOpenAdUnitId,
+      request: const AdRequest(),
+      adLoadCallback: AppOpenAdLoadCallback(
+        onAdLoaded: (ad) {
+          _appOpenAd = ad;
+          _isAppOpenAdReady = true;
+
+          ad.fullScreenContentCallback = FullScreenContentCallback(
+            onAdDismissedFullScreenContent: (ad) {
+              ad.dispose();
+              _isAppOpenAdReady = false;
+              loadAppOpenAd();
+            },
+            onAdFailedToShowFullScreenContent: (ad, error) {
+              ad.dispose();
+              _isAppOpenAdReady = false;
+              loadAppOpenAd();
+            },
+          );
+        },
+        onAdFailedToLoad: (error) {
+          debugPrint('App open ad failed to load: $error');
+          _isAppOpenAdReady = false;
+        },
+      ),
     );
-
-    _rewardedAd!.show(onUserEarnedReward: onUserEarnedReward);
   }
 
-  static void dispose() {
-    _bannerAd?.dispose();
+  /// Show App Open Ad
+  void showAppOpenAd() {
+    if (_isAppOpenAdReady && _appOpenAd != null) {
+      _appOpenAd!.show();
+    }
+  }
+
+  /// Dispose all ads
+  void dispose() {
     _interstitialAd?.dispose();
-    _appOpenAd?.dispose();
-    _nativeAd?.dispose();
     _rewardedAd?.dispose();
+    _appOpenAd?.dispose();
   }
-
-  // Utility methods
-  static bool get isRewardedAdReady => _rewardedAd != null;
-  static bool get isInterstitialAdReady => _interstitialAd != null;
-
-  static bool get isShowingAd => _isShowingAd;
 }

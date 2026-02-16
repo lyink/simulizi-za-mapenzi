@@ -2,85 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ThemeProvider extends ChangeNotifier {
-  static const String _fontSizeKey = 'font_size';
-  static const String _colorSchemeKey = 'color_scheme';
+  static const String _key = 'isDarkMode';
 
-  String _fontSize = 'medium';
-  String _colorScheme = 'default';
+  bool _isDark = false; // default: light theme
 
-  ThemeMode get themeMode => ThemeMode.light; // Always return light theme
-  String get fontSize => _fontSize;
-  String get colorScheme => _colorScheme;
-
-  // Always return false for dark mode
-  bool get isDarkMode => false;
-
-  // Font size multiplier
-  double get fontSizeMultiplier {
-    switch (_fontSize) {
-      case 'small':
-        return 0.875; // 87.5%
-      case 'medium':
-        return 1.0; // 100%
-      case 'large':
-        return 1.125; // 112.5%
-      case 'xlarge':
-        return 1.25; // 125%
-      default:
-        return 1.0;
-    }
-  }
-
-  // Primary color based on color scheme
-  Color get primaryColor {
-    switch (_colorScheme) {
-      case 'default':
-        return const Color(0xFF8D4E27);
-      case 'blue':
-        return Colors.blue;
-      case 'green':
-        return Colors.green;
-      case 'purple':
-        return Colors.purple;
-      default:
-        return const Color(0xFF8D4E27);
-    }
-  }
+  bool get isDark => _isDark;
 
   ThemeProvider() {
-    _loadSettings();
+    _load();
   }
 
-  void _loadSettings() async {
+  Future<void> _load() async {
     final prefs = await SharedPreferences.getInstance();
-    // Always force light theme
-    _fontSize = prefs.getString(_fontSizeKey) ?? 'medium';
-    _colorScheme = prefs.getString(_colorSchemeKey) ?? 'default';
+    _isDark = prefs.getBool(_key) ?? false;
     notifyListeners();
   }
 
-  void setThemeMode(ThemeMode mode) async {
-    // Always force light theme, ignore the parameter
+  Future<void> setDark(bool value) async {
+    _isDark = value;
     notifyListeners();
-  }
-
-  void toggleTheme() {
-    // Do nothing, always keep light theme
-  }
-
-  void setFontSize(String size) async {
-    _fontSize = size;
-    notifyListeners();
-
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(_fontSizeKey, size);
+    await prefs.setBool(_key, value);
   }
 
-  void setColorScheme(String scheme) async {
-    _colorScheme = scheme;
-    notifyListeners();
-
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(_colorSchemeKey, scheme);
-  }
+  void toggle() => setDark(!_isDark);
 }

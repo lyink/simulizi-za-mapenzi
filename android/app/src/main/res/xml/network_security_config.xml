@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
-    <!-- Allow all HTTPS connections -->
+    <!-- Allow all HTTPS connections using system trusted CAs -->
     <base-config cleartextTrafficPermitted="false">
         <trust-anchors>
             <certificates src="system" />
@@ -13,10 +13,17 @@
         <domain includeSubdomains="true">127.0.0.1</domain>
     </domain-config>
 
-    <!-- Explicitly allow blogger.googleusercontent.com -->
+    <!-- Explicitly trust Google & OpenAI domains used by the app -->
     <domain-config cleartextTrafficPermitted="false">
-        <domain includeSubdomains="true">blogger.googleusercontent.com</domain>
+        <domain includeSubdomains="true">googleapis.com</domain>
         <domain includeSubdomains="true">firebasestorage.googleapis.com</domain>
+        <domain includeSubdomains="true">firestore.googleapis.com</domain>
+        <domain includeSubdomains="true">fcm.googleapis.com</domain>
+        <domain includeSubdomains="true">firebase.googleapis.com</domain>
+        <domain includeSubdomains="true">identitytoolkit.googleapis.com</domain>
+        <domain includeSubdomains="true">openai.com</domain>
+        <domain includeSubdomains="true">api.openai.com</domain>
+        <domain includeSubdomains="true">blogger.googleusercontent.com</domain>
         <domain includeSubdomains="true">i.imgur.com</domain>
         <trust-anchors>
             <certificates src="system" />

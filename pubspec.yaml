@@ -16,7 +16,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 1.0.2+10
+version: 1.0.2+11
 
 environment:
   sdk: ^3.9.0
@@ -85,7 +85,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/kei.png
+    - assets/images/icon.png
     # Story files will be fetched from Firebase on demand
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -118,31 +118,31 @@ flutter:
 flutter_launcher_icons:
   android: true
   ios: true
-  image_path: "assets/images/kei.png"
+  image_path: "assets/images/icon.png"
   min_sdk_android: 21
   # Adaptive icons for Android
-  adaptive_icon_background: "#4CAF50"  # Friendly green for children
-  adaptive_icon_foreground: "assets/images/kei.png"
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "assets/images/icon.png"
   remove_alpha_ios: true
   # Background color matching theme
-  background_color: "#4CAF50"  # Friendly green
-  theme_color: "#FF9800"  # Orange accent
+  background_color: "#FFFFFF"
+  theme_color: "#FF6B9D"
 
 # Flutter native splash screen configuration
 flutter_native_splash:
-  color: "#4CAF50"  # Friendly green background
-  image: assets/images/kei.png
-  color_dark: "#388E3C"  # Darker green for dark mode
-  image_dark: assets/images/kei.png
+  color: "#FFFFFF"  # Clean white background
+  image: assets/images/icon.png
+  color_dark: "#1A1A2E"  # Dark background for dark mode
+  image_dark: assets/images/icon.png
 
   # Android 12+ splash screen
   android_12:
-    image: assets/images/kei.png
-    color: "#4CAF50"
-    image_dark: assets/images/kei.png
-    color_dark: "#388E3C"
-    icon_background_color: "#4CAF50"
-    icon_background_color_dark: "#388E3C"
+    image: assets/images/icon.png
+    color: "#FFFFFF"
+    image_dark: assets/images/icon.png
+    color_dark: "#1A1A2E"
+    icon_background_color: "#FFFFFF"
+    icon_background_color_dark: "#1A1A2E"
 
   # Enable full screen
   fullscreen: true

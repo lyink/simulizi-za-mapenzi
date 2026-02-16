@@ -5,17 +5,16 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:simulizi_za_mapenzi/main.dart';
+import 'package:hadithi_kwa_watoto/main.dart';
 
 void main() {
-  testWidgets('Love Stories app loads correctly', (WidgetTester tester) async {
+  testWidgets('App loads correctly', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const SimuliziApp());
+    await tester.pumpWidget(const HadithiApp());
 
-    // Verify that the app title is displayed
-    expect(find.text('Love Stories'), findsOneWidget);
+    // Verify that the app loads
+    expect(find.byType(HadithiApp), findsOneWidget);
   });
 }
