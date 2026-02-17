@@ -40,11 +40,32 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
       return const SizedBox.shrink();
     }
 
-    return Container(
-      alignment: Alignment.center,
-      width: _bannerAd!.size.width.toDouble(),
-      height: _bannerAd!.size.height.toDouble(),
-      child: AdWidget(ad: _bannerAd!),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        // Ad label - required by Google Play policy
+        Container(
+          width: _bannerAd!.size.width.toDouble(),
+          padding: const EdgeInsets.symmetric(vertical: 2),
+          alignment: Alignment.center,
+          child: Text(
+            'Ad',
+            style: TextStyle(
+              fontSize: 10,
+              color: Colors.grey.shade600,
+              fontWeight: FontWeight.w500,
+              letterSpacing: 0.5,
+            ),
+          ),
+        ),
+        // Banner ad
+        Container(
+          alignment: Alignment.center,
+          width: _bannerAd!.size.width.toDouble(),
+          height: _bannerAd!.size.height.toDouble(),
+          child: AdWidget(ad: _bannerAd!),
+        ),
+      ],
     );
   }
 }
