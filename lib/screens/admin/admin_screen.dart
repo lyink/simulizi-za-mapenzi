@@ -79,7 +79,7 @@ class _AIGenerateTabState extends State<_AIGenerateTab> {
   final _storyTextController = TextEditingController();
   final _authorController = TextEditingController();
   final _synopsisController = TextEditingController();
-  String _selectedCategory = 'Adventure';
+  String _selectedCategory = 'First Love';
   bool _isFeatured = false;
   bool _isGenerating = false;
   String _status = '';
@@ -88,13 +88,13 @@ class _AIGenerateTabState extends State<_AIGenerateTab> {
   bool _pasteMode = false;
 
   final List<String> _categories = [
-    'Adventure',
-    'Animals',
-    'Fantasy',
-    'Science',
-    'Morals',
-    'Nature',
-    'Family',
+    'First Love',
+    'Modern Romance',
+    'Traditional Love',
+    'Heartbreak',
+    'Marriage',
+    'Passion',
+    'Reunion',
   ];
 
   final BookService _bookService = BookService();
@@ -203,7 +203,7 @@ class _AIGenerateTabState extends State<_AIGenerateTab> {
     _authorController.clear();
     _synopsisController.clear();
     setState(() {
-      _selectedCategory = 'Adventure';
+      _selectedCategory = 'First Love';
       _isFeatured = false;
       _pasteMode = false;
     });
@@ -368,7 +368,7 @@ class _AIGenerateTabState extends State<_AIGenerateTab> {
                 style: TextStyle(color: textColor, fontSize: 15, height: 1.6),
                 decoration: InputDecoration(
                   hintText:
-                      'Describe your story...\n\nExample: A brave lion cub named Simba goes on an adventure in the African savanna. He meets elephants, zebras, and learns about courage and friendship.',
+                      'Describe your love story...\n\nExample: A young woman named Amina meets a handsome stranger at a wedding in Dar es Salaam. Despite family opposition, their love grows stronger through challenges and misunderstandings, leading to a passionate reunion.',
                   hintStyle: TextStyle(color: mutedColor),
                   alignLabelWithHint: true,
                   filled: true,
@@ -1005,13 +1005,13 @@ class _EditBookDialogState extends State<_EditBookDialog> {
   late bool _isFeatured;
 
   final List<String> _categories = [
-    'Adventure',
-    'Animals',
-    'Fantasy',
-    'Science',
-    'Morals',
-    'Nature',
-    'Family',
+    'First Love',
+    'Modern Romance',
+    'Traditional Love',
+    'Heartbreak',
+    'Marriage',
+    'Passion',
+    'Reunion',
   ];
 
   @override
