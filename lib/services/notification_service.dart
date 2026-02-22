@@ -30,46 +30,56 @@ class NotificationService {
   );
 
   Future<void> initialize() async {
-    // Request permissions
-    await _fcm.requestPermission(
-      alert: true,
-      badge: true,
-      sound: true,
-    );
-
-    // Initialize local notifications
-    const androidInit =
-        AndroidInitializationSettings('@mipmap/ic_launcher');
-    const iosInit = DarwinInitializationSettings(
-      requestAlertPermission: true,
-      requestBadgePermission: true,
-      requestSoundPermission: true,
-    );
-    const initSettings = InitializationSettings(
-      android: androidInit,
-      iOS: iosInit,
-    );
-    await _localNotifications.initialize(initSettings);
-
-    // Create notification channel for Android
-    final androidPlugin = _localNotifications
-        .resolvePlatformSpecificImplementation<
-            AndroidFlutterLocalNotificationsPlugin>();
-    await androidPlugin?.createNotificationChannel(_channel);
-
-    // Subscribe to topic for new books
-    await _fcm.subscribeToTopic(_newBookTopic);
-
-    // Handle foreground messages
-    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      _showLocalNotification(
-        title: message.notification?.title ?? 'Hadithi Mpya!',
-        body: message.notification?.body ?? 'Kuna hadithi mpya inakungojea.',
+    try {
+      // Request permissions
+      await _fcm.requestPermission(
+        alert: true,
+        badge: true,
+        sound: true,
       );
-    });
 
-    // Register background handler
-    FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
+      // Initialize local notifications
+      const androidInit =
+          AndroidInitializationSettings('@mipmap/ic_launcher');
+      const iosInit = DarwinInitializationSettings(
+        requestAlertPermission: true,
+        requestBadgePermission: true,
+        requestSoundPermission: true,
+      );
+      const initSettings = InitializationSettings(
+        android: androidInit,
+        iOS: iosInit,
+      );
+      await _localNotifications.initialize(initSettings);
+
+      // Create notification channel for Android
+      final androidPlugin = _localNotifications
+          .resolvePlatformSpecificImplementation<
+              AndroidFlutterLocalNotificationsPlugin>();
+      await androidPlugin?.createNotificationChannel(_channel);
+
+      // Subscribe to topic for new books (may fail on emulators without Google Play Services)
+      try {
+        await _fcm.subscribeToTopic(_newBookTopic);
+      } catch (e) {
+        // Silently fail if FCM is not available (emulator, no Google Play Services)
+        print('FCM topic subscription failed (this is normal on emulators): $e');
+      }
+
+      // Handle foreground messages
+      FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+        _showLocalNotification(
+          title: message.notification?.title ?? 'Hadithi Mpya!',
+          body: message.notification?.body ?? 'Kuna hadithi mpya inakungojea.',
+        );
+      });
+
+      // Register background handler
+      FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
+    } catch (e) {
+      // If FCM initialization completely fails, continue without it
+      print('FCM initialization failed (app will continue without notifications): $e');
+    }
   }
 
   Future<void> _showLocalNotification({
