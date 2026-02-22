@@ -196,7 +196,7 @@ class _HomeScreenState extends State<HomeScreen>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Hadithi kwa Watoto',
+                        'Simulizi za Mapenzi',
                         style: theme.appBarTheme.titleTextStyle?.copyWith(
                           fontSize: 16,
                           fontWeight: FontWeight.w800,
@@ -205,7 +205,7 @@ class _HomeScreenState extends State<HomeScreen>
                       ),
                       const SizedBox(height: 1),
                       Text(
-                        'Explore magical children\'s stories',
+                        'Explore romantic love stories',
                         style: theme.textTheme.bodyMedium?.copyWith(
                           fontSize: 10,
                           letterSpacing: 0,

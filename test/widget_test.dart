@@ -7,14 +7,14 @@
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:hadithi_kwa_watoto/main.dart';
+import 'package:simulizi_za_mapenzi/main.dart';
 
 void main() {
   testWidgets('App loads correctly', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const HadithiApp());
+    await tester.pumpWidget(const SimuliziApp());
 
     // Verify that the app loads
-    expect(find.byType(HadithiApp), findsOneWidget);
+    expect(find.byType(SimuliziApp), findsOneWidget);
   });
 }

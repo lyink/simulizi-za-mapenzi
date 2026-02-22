@@ -225,7 +225,7 @@ class AppDrawer extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(bottom: 12),
                 child: Text(
-                  'Hadithi kwa Watoto v1.0',
+                  'Simulizi za Mapenzi v1.0',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: subTextColor?.withValues(alpha: 0.5),
@@ -256,7 +256,7 @@ class _DrawerHeader extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(16),
             child: Image.asset(
-              'assets/images/icon.png',
+              'assets/images/kei.png',
               width: 52,
               height: 52,
               fit: BoxFit.cover,
@@ -279,7 +279,7 @@ class _DrawerHeader extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Hadithi kwa Watoto',
+                'Simulizi za Mapenzi',
                 style: TextStyle(
                   color: Theme.of(context).textTheme.bodyLarge?.color,
                   fontSize: 16,

@@ -36,19 +36,19 @@ void main() async {
   runApp(
     ChangeNotifierProvider(
       create: (_) => ThemeProvider(),
-      child: const HadithibooksApp(),
+      child: const SimuliziApp(),
     ),
   );
 }
 
-class HadithibooksApp extends StatelessWidget {
-  const HadithibooksApp({super.key});
+class SimuliziApp extends StatelessWidget {
+  const SimuliziApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     final themeProvider = context.watch<ThemeProvider>();
     return MaterialApp(
-      title: 'Hadithi kwa Watoto',
+      title: 'Simulizi za Mapenzi',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.theme,

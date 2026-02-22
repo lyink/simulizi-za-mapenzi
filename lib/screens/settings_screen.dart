@@ -112,7 +112,7 @@ class SettingsScreen extends StatelessWidget {
                 _SettingsTile(
                   icon: Icons.auto_stories_rounded,
                   iconColor: AppTheme.accent,
-                  title: 'Hadithi kwa Watoto',
+                  title: 'Simulizi za Mapenzi',
                   subtitle: 'Version 1.0',
                   textPrimary: textPrimary,
                   textSub: textSub,
@@ -122,7 +122,7 @@ class SettingsScreen extends StatelessWidget {
                   icon: Icons.info_outline_rounded,
                   iconColor: AppTheme.accent,
                   title: 'Description',
-                  subtitle: 'A children\'s Swahili story books.',
+                  subtitle: 'Romantic love stories in Swahili.',
                   textPrimary: textPrimary,
                   textSub: textSub,
                 ),
